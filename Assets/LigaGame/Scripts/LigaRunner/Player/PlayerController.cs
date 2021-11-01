@@ -8,12 +8,11 @@ namespace LigaGame
         [SerializeField] private float _speed = 6.0f;
         [SerializeField] private float _jumpForce = 8.0f;
         [SerializeField] private LayerMask _platformLayerMask;
-        [SerializeField] private Transform _spriteTransform;
+        [SerializeField] private PlayerView _playerView;
         private float _targetVelocityX;
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
-        private float _lastDirection;
-        private const float _extraGoundTestHeigth = 0.01f;
+        private const float _extraGoundTestHeigth = 0.1f;
 
         private void Awake()
         {
@@ -34,28 +33,19 @@ namespace LigaGame
             {
                 Vector3 jumpForce = new Vector2(0f, _jumpForce);
                 _rigidbody.AddForce(jumpForce);
+                _playerView.Jump();
             }
         }
 
         public void Move(float direction)
         {
-            // Debug.Log("move");
             _targetVelocityX = direction * _speed;
+            _playerView.Move(direction);
 
-            bool willChangeDirection = direction != 0f;
-
-            if (willChangeDirection)
-            {
-                bool willFaceRight = direction > 0.0f;
-                _spriteTransform.localScale = new Vector3(willFaceRight ? 1.0f : -1.0f, 1.0f, 1.0f);
-            }
-
-            _lastDirection = direction;
         }
 
         private bool IsGrounded()
         {
-            return true;
             Vector2 origin = _collider.bounds.center;
             float raycastDistance = _collider.bounds.extents.y + _extraGoundTestHeigth;
 
