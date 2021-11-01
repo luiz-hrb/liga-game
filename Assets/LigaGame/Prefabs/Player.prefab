@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 1037346184786672863}
   - component: {fileID: 1037346184786672862}
   - component: {fileID: 1037346184786672832}
-  - component: {fileID: 3060941760928501280}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -220,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
-  _jumpSpeed: 50
+  _jumpForce: 500
   _platformLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -240,23 +239,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!247 &3060941760928501280
-ConstantForce2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1037346184786672860}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 0}
-  m_RelativeForce: {x: 0, y: 0}
-  m_Torque: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1037346185053184452
 GameObject:
   m_ObjectHideFlags: 0

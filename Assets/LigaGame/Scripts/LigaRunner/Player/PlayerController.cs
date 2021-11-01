@@ -3,16 +3,15 @@ using UnityEngine;
 namespace LigaGame
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(ConstantForce2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private float _speed = 6.0f;
-        [SerializeField] private float _jumpSpeed = 8.0f;
+        [SerializeField] private float _jumpForce = 8.0f;
         [SerializeField] private LayerMask _platformLayerMask;
         [SerializeField] private Transform _spriteTransform;
+        private float _targetVelocityX;
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
-        private ConstantForce2D _constantForce;
         private float _lastDirection;
         private const float _extraGoundTestHeigth = 0.01f;
 
@@ -20,23 +19,28 @@ namespace LigaGame
         {
             _collider = GetComponentInChildren<Collider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _constantForce = GetComponent<ConstantForce2D>();
+        }
+
+        private void FixedUpdate()
+        {
+            Vector3 velocity = _rigidbody.velocity;
+            velocity.x = _targetVelocityX;
+            _rigidbody.velocity = velocity;
         }
 
         public void Jump()
         {
             if (IsGrounded())
             {
-                Vector3 jump = new Vector3(0.0f, _jumpSpeed, 0.0f);
-                GetComponent<Rigidbody>().AddForce(jump);
+                Vector3 jumpForce = new Vector2(0f, _jumpForce);
+                _rigidbody.AddForce(jumpForce);
             }
         }
 
         public void Move(float direction)
         {
-            Debug.Log("move");
-            Vector3 movement = new Vector3(direction, 0.0f, 0.0f);
-            _constantForce.force = movement * _speed;
+            // Debug.Log("move");
+            _targetVelocityX = direction * _speed;
 
             bool willChangeDirection = direction != 0f;
 
@@ -51,6 +55,7 @@ namespace LigaGame
 
         private bool IsGrounded()
         {
+            return true;
             Vector2 origin = _collider.bounds.center;
             float raycastDistance = _collider.bounds.extents.y + _extraGoundTestHeigth;
 
@@ -60,6 +65,16 @@ namespace LigaGame
             Color rayColor = isGrounded ? Color.green : Color.red;
             Debug.DrawRay(origin, Vector2.down * raycastDistance, rayColor);
             return isGrounded;
+        }
+
+        public void Die()
+        {
+
+        }
+
+        public void Revive()
+        {
+
         }
     }
 }

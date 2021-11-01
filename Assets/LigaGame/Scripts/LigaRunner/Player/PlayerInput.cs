@@ -21,20 +21,23 @@ namespace LigaGame.Player
         private void OnEnable()
         {
             _movementAction = _playerActions.PlayerControls.Movement;
-            EnableInputAction(_movementAction, MovementAction);
+            _movementAction.started += MovementAction;
+            _movementAction.performed += MovementAction;
+            _movementAction.canceled += MovementAction;
+            _movementAction.Enable();
 
             _jumpAction = _playerActions.PlayerControls.Jump;
-            EnableInputAction(_jumpAction, JumpAction);
+            _jumpAction.started += JumpAction;
+            _jumpAction.Enable();
         }
 
-        private void EnableInputAction(InputAction action, Action<InputAction.CallbackContext> callback)
-        {
-            action.Enable();
-            action.started += callback;
-            action.performed += callback;
-            action.canceled += callback;
-            action.Enable();
-        }
+        // private void EnableInputAction(InputAction action, Action<InputAction.CallbackContext> callback)
+        // {
+        //     action.started += callback;
+        //     action.performed += callback;
+        //     action.canceled += callback;
+        //     action.Enable();
+        // }
 
         private void MovementAction(InputAction.CallbackContext context)
         {
@@ -44,12 +47,7 @@ namespace LigaGame.Player
 
         private void JumpAction(InputAction.CallbackContext context)
         {
-            // bool jump = context.started;
-            
-            // if (jump)
-            // {
-                _playerController.Jump();
-            // }
+            _playerController.Jump();
         }
     }
 }

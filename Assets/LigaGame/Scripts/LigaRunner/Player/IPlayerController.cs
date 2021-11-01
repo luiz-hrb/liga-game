@@ -8,5 +8,7 @@ namespace LigaGame
     {
         void Jump();
         void Move(float direction);
+        void Die();
+        void Revive();
     }    
 }
