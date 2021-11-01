@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,12 +21,19 @@ namespace LigaGame.Player
         private void OnEnable()
         {
             _movementAction = _playerActions.PlayerControls.Movement;
-            _movementAction.performed += MovementAction;
-            _movementAction.Enable();
+            EnableInputAction(_movementAction, MovementAction);
 
             _jumpAction = _playerActions.PlayerControls.Jump;
-            _jumpAction.performed += JumpAction;
-            _jumpAction.Enable();
+            EnableInputAction(_jumpAction, JumpAction);
+        }
+
+        private void EnableInputAction(InputAction action, Action<InputAction.CallbackContext> callback)
+        {
+            action.Enable();
+            action.started += callback;
+            action.performed += callback;
+            action.canceled += callback;
+            action.Enable();
         }
 
         private void MovementAction(InputAction.CallbackContext context)
@@ -38,12 +44,12 @@ namespace LigaGame.Player
 
         private void JumpAction(InputAction.CallbackContext context)
         {
-            bool jump = context.started;
+            // bool jump = context.started;
             
-            if (jump)
-            {
+            // if (jump)
+            // {
                 _playerController.Jump();
-            }
+            // }
         }
     }
 }
