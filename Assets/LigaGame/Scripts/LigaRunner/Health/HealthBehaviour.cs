@@ -23,24 +23,20 @@ namespace LigaGame.Health
 
         public void Damage(float damage)
         {
-            float newHealth = _currentHealth - damage;
-            newHealth = Mathf.Clamp(newHealth, 0f, _maxHealth);
-            SetHealth(newHealth);
+            SetHealth(_currentHealth - damage);
+            OnDamage.Invoke();
+        }
+
+        public void Heal(float heal)
+        {
+            SetHealth(_currentHealth + heal);
+            OnHeal.Invoke();
         }
 
         private void SetHealth(float health)
         {
             bool isDamage = health < _currentHealth;
-            _currentHealth = health;
-
-            if (isDamage)
-            {
-                OnDamage.Invoke();
-            }
-            else
-            {
-                OnHeal.Invoke();
-            }
+            _currentHealth = Mathf.Clamp(health, 0f, _maxHealth);
 
             if (!IsAlive)
             {

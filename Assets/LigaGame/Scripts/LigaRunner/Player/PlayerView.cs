@@ -31,7 +31,7 @@ namespace LigaGame.Player
             _animator.SetTrigger("Damaged");
         }
 
-        public void Die()
+        public void Died()
         {
             _animator.SetTrigger("Died");
         }

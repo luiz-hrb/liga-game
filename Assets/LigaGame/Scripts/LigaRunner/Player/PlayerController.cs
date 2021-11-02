@@ -12,6 +12,7 @@ namespace LigaGame.Player
         [SerializeField] private LayerMask _platformLayerMask;
         [SerializeField] private PlayerView _playerView;
         private float _targetVelocityX;
+        private bool _isAlive = true;
         private bool _isGrounded;
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
@@ -26,6 +27,7 @@ namespace LigaGame.Player
             _healthBehaviour = GetComponent<HealthBehaviour>();
 
             _healthBehaviour.OnDamage.AddListener(() => OnDamaged());
+            _healthBehaviour.OnDeath.AddListener(() => OnDeath());
         }
 
         private void FixedUpdate()
@@ -40,6 +42,9 @@ namespace LigaGame.Player
 
         public void Jump()
         {
+            if (!_isAlive)
+                return;
+                
             if (_isGrounded)
             {
                 Vector3 jumpForce = new Vector2(0f, _jumpForce);
@@ -50,6 +55,9 @@ namespace LigaGame.Player
 
         public void Move(float direction)
         {
+            if (!_isAlive)
+                return;
+
             _targetVelocityX = direction * _speed;
             _playerView.Move(direction);
         }
@@ -69,16 +77,24 @@ namespace LigaGame.Player
 
         public void OnDamaged()
         {
+            if (!_isAlive)
+                return;
+                
             _playerView.Damaged();
         }
 
-        public void Die()
+        public void OnDeath()
         {
-
+            if (!_isAlive)
+                return;
+                
+            _isAlive = false;
+            _playerView.Died();
         }
 
         public void Revive()
         {
+            _isAlive = true;
 
         }
     }
