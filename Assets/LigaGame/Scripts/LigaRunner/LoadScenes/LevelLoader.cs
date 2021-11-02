@@ -2,14 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum ScenesIndex
-{
-    ASYNC_LOAD = 0,
-    MENU = 1,
-    GAMEPLAY = 2,
-}
-
-namespace LigaGame.UI.LoadScenes
+namespace LigaGame.LoadScenes
 {
     public sealed class LevelLoader : MonoBehaviour
     {
@@ -18,24 +11,26 @@ namespace LigaGame.UI.LoadScenes
         public static LevelLoader _instance;
         public static LevelLoader Instance
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new GameObject(nameof(LevelLoader)).AddComponent<LevelLoader>();
-                }
-                return _instance;
-            }
+            get => _instance;
             private set => _instance = value;
         }
 
-        private void Awake()
+        private void Start()
         {
             if (Instance != null)
             {
                 Destroy(gameObject);
             }
-            Instance = this;
+            else
+            {
+                Instance = this;
+            }
+
+            Setup();
+        }
+
+        private void Setup()
+        {
             DontDestroyOnLoad(gameObject);
             _waitBeforeLoadScene = new WaitForSeconds(1f);
         }
@@ -45,13 +40,12 @@ namespace LigaGame.UI.LoadScenes
             StartCoroutine(LoadAsync((int)level));
         }
 
-        private IEnumerator LoadAsync(int nextLevel)
+        private IEnumerator LoadAsync(int nextLevelId)
         {
             SceneManager.LoadScene((int)ScenesIndex.ASYNC_LOAD);
-
             yield return _waitBeforeLoadScene;
 
-            _asyncLoadScene = SceneManager.LoadSceneAsync(nextLevel);
+            _asyncLoadScene = SceneManager.LoadSceneAsync(nextLevelId);
             _asyncLoadScene.allowSceneActivation = false;
 
             while (_asyncLoadScene.progress < 0.9f)

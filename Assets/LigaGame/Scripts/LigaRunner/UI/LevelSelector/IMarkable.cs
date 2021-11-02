@@ -1,4 +1,4 @@
-namespace LigaGame.UI.UI
+namespace LigaGame.UI
 {
     public interface IMarkable
     {

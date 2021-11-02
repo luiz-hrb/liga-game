@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LigaGame.UI.UI
+namespace LigaGame.UI
 {
     public class Markable : MonoBehaviour
     {

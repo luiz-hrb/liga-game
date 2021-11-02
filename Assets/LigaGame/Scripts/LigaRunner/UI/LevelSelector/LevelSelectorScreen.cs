@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using LigaGame.UI.Save;
+using LigaGame.ScriptableObjects;
+using LigaGame.LoadScenes;
 
 namespace LigaGame.UI.Menu.LevelSelector
 {
@@ -46,7 +48,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         private LevelSelectorButton CreateButton(LevelData levelData, LevelProgressData levelProgressData)
         {
             var button = Instantiate(_levelButtonPrefab, _levelButtonParent);
-            button.Initialize(levelData, levelProgressData);
+            button.Initialize(levelData, levelProgressData, () => LevelLoader.Instance.LoadLevelAsync(levelData.Scene));
             return button;
         }
 

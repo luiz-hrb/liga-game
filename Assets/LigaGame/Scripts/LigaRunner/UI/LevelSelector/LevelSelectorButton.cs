@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using LigaGame.UI.UI;
+using LigaGame.ScriptableObjects;
 
 namespace LigaGame.UI.Menu.LevelSelector
 {

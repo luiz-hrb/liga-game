@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using LigaGame.UI.LoadScenes;
 
-namespace LigaGame.UI.UI.Menu
+namespace LigaGame.UI.Menu
 {
     public sealed class MenuScreen : Screen
     {

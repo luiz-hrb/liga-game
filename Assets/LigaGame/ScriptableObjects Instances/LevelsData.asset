@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels:
   - Name: "N\xEDvel 1"
-    Scene: 
+    Scene: 2
     Icon: {fileID: 21300000, guid: 26656cad0c0ea0046b8cf6ab6f49a52a, type: 3}
   - Name: "N\xEDvel 2"
-    Scene: 
+    Scene: 3
     Icon: {fileID: 21300000, guid: 8b7fc4c554f998b4387a1b63dc6d272a, type: 3}
   - Name: "N\xEDvel 3"
-    Scene: 
+    Scene: 4
     Icon: {fileID: 21300000, guid: ee43552d1f5b6094cb3e24495f02290b, type: 3}

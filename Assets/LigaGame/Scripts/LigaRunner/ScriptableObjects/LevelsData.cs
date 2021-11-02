@@ -1,17 +1,21 @@
 using UnityEngine;
+using LigaGame.LoadScenes;
 
-[CreateAssetMenu(fileName = "LevelsData", menuName = "ScriptableObjects/LevelsData", order = 1)]
-public class LevelsData : ScriptableObject
+namespace LigaGame.ScriptableObjects
 {
-    [SerializeField] private LevelData[] _levels;
+    [CreateAssetMenu(fileName = "LevelsData", menuName = "ScriptableObjects/LevelsData", order = 1)]
+    public class LevelsData : ScriptableObject
+    {
+        [SerializeField] private LevelData[] _levels;
 
-    public LevelData[] Levels => _levels;
-}
+        public LevelData[] Levels => _levels;
+    }
 
-[System.Serializable]
-public class LevelData
-{
-    public string Name;
-    public string Scene;
-    public Sprite Icon;
+    [System.Serializable]
+    public class LevelData
+    {
+        public string Name;
+        public ScenesIndex Scene;
+        public Sprite Icon;
+    }
 }
