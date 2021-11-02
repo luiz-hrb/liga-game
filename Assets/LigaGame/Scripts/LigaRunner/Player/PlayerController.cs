@@ -10,8 +10,10 @@ namespace LigaGame.UI
         [SerializeField] private LayerMask _platformLayerMask;
         [SerializeField] private PlayerView _playerView;
         private float _targetVelocityX;
+        private bool _isGrounded;
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
+
         private const float _extraGoundTestHeigth = 0.1f;
 
         private void Awake()
@@ -25,11 +27,14 @@ namespace LigaGame.UI
             Vector3 velocity = _rigidbody.velocity;
             velocity.x = _targetVelocityX;
             _rigidbody.velocity = velocity;
+
+            _isGrounded = IsGrounded();
+            _playerView.IsGrounded(_isGrounded);
         }
 
         public void Jump()
         {
-            if (IsGrounded())
+            if (_isGrounded)
             {
                 Vector3 jumpForce = new Vector2(0f, _jumpForce);
                 _rigidbody.AddForce(jumpForce);

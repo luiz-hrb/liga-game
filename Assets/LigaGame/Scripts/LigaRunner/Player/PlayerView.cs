@@ -35,5 +35,10 @@ namespace LigaGame.UI
         {
             _animator.SetTrigger("Revived");
         }
+
+        public void IsGrounded(bool isGrounded)
+        {
+            _animator.SetBool("IsGrounded", isGrounded);
+        }
     }
 }
