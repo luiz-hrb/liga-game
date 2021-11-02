@@ -1,8 +1,10 @@
 using UnityEngine;
+using LigaGame.Health;
 
 namespace LigaGame.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(HealthBehaviour))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private float _speed = 6.0f;
@@ -13,6 +15,7 @@ namespace LigaGame.Player
         private bool _isGrounded;
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
+        private HealthBehaviour _healthBehaviour;
 
         private const float _extraGoundTestHeigth = 0.1f;
 
@@ -20,6 +23,9 @@ namespace LigaGame.Player
         {
             _collider = GetComponentInChildren<Collider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _healthBehaviour = GetComponent<HealthBehaviour>();
+
+            _healthBehaviour.OnDamage.AddListener(() => OnDamaged());
         }
 
         private void FixedUpdate()
@@ -46,7 +52,6 @@ namespace LigaGame.Player
         {
             _targetVelocityX = direction * _speed;
             _playerView.Move(direction);
-
         }
 
         private bool IsGrounded()
@@ -60,6 +65,11 @@ namespace LigaGame.Player
             Color rayColor = isGrounded ? Color.green : Color.red;
             Debug.DrawRay(origin, Vector2.down * raycastDistance, rayColor);
             return isGrounded;
+        }
+
+        public void OnDamaged()
+        {
+            _playerView.Damaged();
         }
 
         public void Die()
