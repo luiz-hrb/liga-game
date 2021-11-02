@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEditor;
 #endif
 
-namespace LigaGame.Save
+namespace LigaGame.UI.Save
 {
     public static class SaveSystem
     {

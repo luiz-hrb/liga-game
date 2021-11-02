@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace LigaGame.LoadScenes
+namespace LigaGame.UI.LoadScenes
 {
     public sealed class LoadingDotsAnimation : MonoBehaviour
     {

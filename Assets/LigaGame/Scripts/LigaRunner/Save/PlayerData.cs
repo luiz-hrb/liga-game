@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using LigaGame.Save;
+using LigaGame.UI.Save;
 
 
 [System.Serializable]

@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using LigaGame.UI;
+using LigaGame.UI.UI;
 
-namespace LigaGame.Menu.LevelSelector
+namespace LigaGame.UI.Menu.LevelSelector
 {
     public class LevelSelectorButton : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace LigaGame.Menu.LevelSelector
         public Image _IconImage => _iconImage;
         public TextMeshProUGUI _TitleText => _nameText;
 
-        public void Init(LevelData levelData, LevelProgressData levelProgressData, Action onClickAction = null)
+        public void Initialize(LevelData levelData, LevelProgressData levelProgressData, Action onClickAction = null)
         {
             _nameText.text = levelData.Name;
             _iconImage.sprite = levelData.Icon;
@@ -33,6 +33,7 @@ namespace LigaGame.Menu.LevelSelector
             for (int scoreMarkId = 0; scoreMarkId < _scoreMarcs.Length; scoreMarkId++)
             {
                 Markable mark = _scoreMarcs[scoreMarkId];
+                
                 if (levelProgressData.completed)
                 {
                     bool willMarkThisStar = scoreMarkId < levelProgressData.starsCollected;

@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LigaGame.Save;
+using UnityEngine.UI;
+using LigaGame.UI.Save;
 
-namespace LigaGame.Menu.LevelSelector
+namespace LigaGame.UI.Menu.LevelSelector
 {
-    public class LevelSelector : MonoBehaviour
+    public class LevelSelectorScreen : Screen
     {
         [SerializeField] private LevelsData _levelsData;
         [SerializeField] private LevelSelectorButton _levelButtonPrefab;
         [SerializeField] private Transform _levelButtonParent;
+        [SerializeField] private Button _returnButton;
         private List<LevelSelectorButton> _buttons;
 
-        private void Awake()
+        private new void Awake()
         {
+            base.Awake();
             _buttons = new List<LevelSelectorButton>();
+            _returnButton.onClick.AddListener(Return);
 
             SaveSystem.PlayerData.SetLevelsQuantity(_levelsData.Levels.Length);
         }
@@ -42,7 +46,7 @@ namespace LigaGame.Menu.LevelSelector
         private LevelSelectorButton CreateButton(LevelData levelData, LevelProgressData levelProgressData)
         {
             var button = Instantiate(_levelButtonPrefab, _levelButtonParent);
-            button.Init(levelData, levelProgressData);
+            button.Initialize(levelData, levelProgressData);
             return button;
         }
 

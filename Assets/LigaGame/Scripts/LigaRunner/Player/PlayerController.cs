@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LigaGame
+namespace LigaGame.UI
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour, IPlayerController

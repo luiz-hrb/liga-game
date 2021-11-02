@@ -9,7 +9,7 @@ public enum ScenesIndex
     GAMEPLAY = 2,
 }
 
-namespace LigaGame.LoadScenes
+namespace LigaGame.UI.LoadScenes
 {
     public sealed class LevelLoader : MonoBehaviour
     {
