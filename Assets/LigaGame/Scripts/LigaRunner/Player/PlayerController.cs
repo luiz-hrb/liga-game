@@ -1,5 +1,6 @@
 using UnityEngine;
 using LigaGame.Health;
+using UnityEngine.Events;
 
 namespace LigaGame.Player
 {
@@ -19,6 +20,7 @@ namespace LigaGame.Player
         private HealthBehaviour _healthBehaviour;
 
         private const float _extraGoundTestHeigth = 0.1f;
+        public UnityEvent OnDeath;
 
         private void Awake()
         {
@@ -26,8 +28,8 @@ namespace LigaGame.Player
             _rigidbody = GetComponent<Rigidbody2D>();
             _healthBehaviour = GetComponent<HealthBehaviour>();
 
-            _healthBehaviour.OnDamage.AddListener(() => OnDamaged());
-            _healthBehaviour.OnDeath.AddListener(() => OnDeath());
+            _healthBehaviour.OnDamage.AddListener(() => Damaged());
+            _healthBehaviour.OnDeath.AddListener(() => Died());
         }
 
         private void FixedUpdate()
@@ -75,7 +77,7 @@ namespace LigaGame.Player
             return isGrounded;
         }
 
-        public void OnDamaged()
+        public void Damaged()
         {
             if (!_isAlive)
                 return;
@@ -83,19 +85,19 @@ namespace LigaGame.Player
             _playerView.Damaged();
         }
 
-        public void OnDeath()
+        public void Died()
         {
             if (!_isAlive)
                 return;
                 
             _isAlive = false;
             _playerView.Died();
+            OnDeath.Invoke();
         }
 
         public void Revive()
         {
             _isAlive = true;
-
         }
     }
 }

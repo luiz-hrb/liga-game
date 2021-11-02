@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 1037346184786672862}
   - component: {fileID: 1037346184786672832}
   - component: {fileID: 6842258322845538242}
+  - component: {fileID: 8057354498534328359}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -225,6 +226,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _playerView: {fileID: 6842258322845538242}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &1037346184786672832
 Rigidbody2D:
   serializedVersion: 4
@@ -260,6 +264,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1037346184677017177}
   _spriteTransform: {fileID: 1037346185053184453}
+--- !u!114 &8057354498534328359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037346184786672860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d489733b239124fb51d9ae6243a04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3
+  _currentHealth: 0
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1037346185053184452
 GameObject:
   m_ObjectHideFlags: 0

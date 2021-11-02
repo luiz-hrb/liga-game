@@ -12,13 +12,27 @@ namespace LigaGame
         [SerializeField] private PlayerSpawer _playerSpawer;
         [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
         [SerializeField] private Timer _timer;
+        [SerializeField] private Checkpoint _lastCheckpoint;
         private PlayerController _player;
 
-        private void Start()
+        private void Awake()
         {
             _player = _playerSpawer.SpawnPlayer();
+            _player.OnDeath.AddListener(() => OnPlayerDie());
             _cinemachineCamera.Follow = _player.transform;
+            
             _timer.StartCount();
+            _lastCheckpoint.OnCheckpointReached.AddListener(() => OnFinishLevel());
+        }
+
+        private void OnPlayerDie()
+        {
+            Debug.Log("Player died");
+        }
+
+        private void OnFinishLevel()
+        {
+            Debug.Log("Finished level");
         }
     }
 }

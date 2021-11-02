@@ -8,8 +8,8 @@ namespace LigaGame.Player
     {
         void Jump();
         void Move(float direction);
-        void OnDamaged();
-        void OnDeath();
+        void Damaged();
+        void Died();
         void Revive();
     }    
 }
