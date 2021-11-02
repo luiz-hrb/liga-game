@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LigaGame.Save;
 
 namespace LigaGame.Menu.LevelSelector
 {
@@ -11,27 +12,37 @@ namespace LigaGame.Menu.LevelSelector
         [SerializeField] private Transform _levelButtonParent;
         private List<LevelSelectorButton> _buttons;
 
-        private void Start()
+        private void Awake()
         {
             _buttons = new List<LevelSelectorButton>();
+
+            SaveSystem.PlayerData.SetLevelsQuantity(_levelsData.Levels.Length);
+        }
+
+        private void Start()
+        {
             CreateButtons();
         }
 
         private void CreateButtons()
         {
             ClearButtons();
+            var levelsProgressData = SaveSystem.PlayerData.levelsProgressData;
 
-            foreach (LevelData levelData in _levelsData.Levels)
+            for (int i = 0; i < levelsProgressData.Length; i++)
             {
-                LevelSelectorButton button = CreateButton(levelData);
+                LevelData levelData = _levelsData.Levels[i];
+                LevelProgressData levelProgressData = levelsProgressData[i];
+
+                LevelSelectorButton button = CreateButton(levelData, levelProgressData);
                 _buttons.Add(button);
             }
         }
 
-        private LevelSelectorButton CreateButton(LevelData levelData)
+        private LevelSelectorButton CreateButton(LevelData levelData, LevelProgressData levelProgressData)
         {
             var button = Instantiate(_levelButtonPrefab, _levelButtonParent);
-            button.Init(levelData, 3);
+            button.Init(levelData, levelProgressData);
             return button;
         }
 

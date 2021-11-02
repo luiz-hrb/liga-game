@@ -16,11 +16,11 @@ namespace LigaGame.Menu.LevelSelector
         public Image _IconImage => _iconImage;
         public TextMeshProUGUI _TitleText => _nameText;
 
-        public void Init(LevelData levelData, int starsToMark, Action onClickAction = null)
+        public void Init(LevelData levelData, LevelProgressData levelProgressData, Action onClickAction = null)
         {
             _nameText.text = levelData.Name;
             _iconImage.sprite = levelData.Icon;
-            MarkStars(starsToMark);
+            MarkProgress(levelProgressData);
 
             if (onClickAction != null)
             {
@@ -28,17 +28,15 @@ namespace LigaGame.Menu.LevelSelector
             }
         }
 
-        public void MarkStars(int starsToMarkQuantity)
+        public void MarkProgress(LevelProgressData levelProgressData)
         {
-            bool willActiveStars = starsToMarkQuantity >= 0;
-
-            for (int starId = 0; starId < _scoreMarcs.Length; starId++)
+            for (int scoreMarkId = 0; scoreMarkId < _scoreMarcs.Length; scoreMarkId++)
             {
-                Markable mark = _scoreMarcs[starId];
-                if (willActiveStars)
+                Markable mark = _scoreMarcs[scoreMarkId];
+                if (levelProgressData.completed)
                 {
-                    bool willMarkStar = starId < starsToMarkQuantity;
-                    mark.SetState(willMarkStar ? MarkableState.Marked : MarkableState.Unmarked);
+                    bool willMarkThisStar = scoreMarkId < levelProgressData.starsCollected;
+                    mark.SetState(willMarkThisStar ? MarkableState.Marked : MarkableState.Unmarked);
                 }
                 else
                 {

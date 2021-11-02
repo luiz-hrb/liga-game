@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 
 [System.Serializable]
-public class LevelSaveData
+public class LevelProgressData
 {
+    public bool completed;
     public int starsCollected;
     public float gameplayTime;
 }
