@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-namespace LigaGame.UI.Timer
+namespace LigaGame.UI
 {
     public class Timer : MonoBehaviour
     {

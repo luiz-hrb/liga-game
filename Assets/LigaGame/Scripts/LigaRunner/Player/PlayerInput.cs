@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace LigaGame.UI.Player
+namespace LigaGame.Player
 {
     [RequireComponent(typeof(PlayerController))]
     public class PlayerInput : MonoBehaviour

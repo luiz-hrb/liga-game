@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LigaGame.UI
+namespace LigaGame.Player
 {
     public interface IPlayerController
     {
