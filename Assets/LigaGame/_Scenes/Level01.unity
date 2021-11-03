@@ -332,7 +332,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 234.82458, y: 100}
+  m_SizeDelta: {x: 234.8246, y: 141.0313}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &114573839
 MonoBehaviour:
@@ -1720,7 +1720,7 @@ GameObject:
   - component: {fileID: 840754085}
   - component: {fileID: 840754086}
   m_Layer: 5
-  m_Name: OnGameOverScreen
+  m_Name: GameOverScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2064,7 +2064,7 @@ GameObject:
   - component: {fileID: 944533919}
   - component: {fileID: 944533920}
   m_Layer: 5
-  m_Name: OnWinScreen
+  m_Name: WinScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4011,7 +4011,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 234.8246, y: 100}
+  m_SizeDelta: {x: 234.8246, y: 141.0313}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1697683458
 MonoBehaviour:

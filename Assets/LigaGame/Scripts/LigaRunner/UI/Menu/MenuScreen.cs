@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 namespace LigaGame.UI.Menu
 {
@@ -20,11 +21,13 @@ namespace LigaGame.UI.Menu
 
         public void Play()
         {
+            Analytics.CustomEvent("Play");
             NotifyParent(_playNotification);
         }
 
         public void Quit()
         {
+            Analytics.CustomEvent("Quit");
             NotifyParent(_quitNotification);
         }
     }

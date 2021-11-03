@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using LigaGame.Player;
 using LigaGame.UI;
 using Cinemachine;
@@ -61,22 +62,42 @@ namespace LigaGame
 
             _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.GameOver);
             _timer.PauseCount();
+
+            Analytics.CustomEvent("PlayerDie", new Dictionary<string, object>
+            {
+                { "Level", _levelData.Name },
+                { "Stars", _scoreStars.Points }
+            });
         }
 
         private void OnFinishLevel()
         {
-            (int score, int maxScore, float time) scoreData = (_scoreStars.Points, _levelData.QuantityStars, _timer.ElapsedTime);
-            _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.Win, scoreData);
-
             _timer.PauseCount();
             _playerWon = true;
             _player.CanInteract = false;
             
+            SubmitScore();
+
+            Analytics.CustomEvent("PlayerWin", new Dictionary<string, object>
+            {
+                { "Level", _levelData.Name },
+                { "Stars", _scoreStars.Points }
+            });
+        }
+
+        private void SubmitScore()
+        {
+            (int score, int maxScore, float time) scoreData = (_scoreStars.Points, _levelData.QuantityStars, _timer.ElapsedTime);
+            _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.Win, scoreData);
             ScoreManager.Submit(scoreData.score, scoreData.time, _levelData);
         }
 
         private void OnStarCollected()
         {
+            Analytics.CustomEvent("CollectedStar", new Dictionary<string, object>
+            {
+                { "Level", _levelData.Name },
+            });
             _scoreStars.SetPoints(_scoreStars.Points + 1);
         }
     }

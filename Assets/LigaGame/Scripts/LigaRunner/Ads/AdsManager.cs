@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.Advertisements;
+using UnityEngine.Analytics;
 
 namespace LigaGame.Ads
 {
@@ -26,6 +27,7 @@ namespace LigaGame.Ads
         {
             if (Advertisement.IsReady(_adUnitId))
             {
+                Analytics.CustomEvent("Viwed Ads");
                 Advertisement.Show(_adUnitId);
             }
         }
