@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LigaGame/_Scenes/Level01.unity
     guid: 93cf6be35fa1a57469868fc7d3ff4e99
+  - enabled: 1
+    path: Assets/LigaGame/_Scenes/Level02.unity
+    guid: 48d1e2c5a318a6d49b80cbb118266813
+  - enabled: 1
+    path: Assets/LigaGame/_Scenes/Level03.unity
+    guid: 24a8a93b055e2ac4f80bad834457c910
   m_configObjects: {}

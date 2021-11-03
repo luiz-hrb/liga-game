@@ -2394,6 +2394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a3219f2797d7c4fa1728869d611b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneIndex: 4
   _playerSpawer: {fileID: 1200106765}
   _cinemachineCamera: {fileID: 933408027}
   _timer: {fileID: 2066375346}
@@ -2405,7 +2406,6 @@ MonoBehaviour:
   _scoreStars: {fileID: 1803663383}
   _healthbar: {fileID: 2075133619}
   _levelsData: {fileID: 11400000, guid: 19e93913bb39b8a409dc53280773db03, type: 2}
-  _sceneIndex: 2
   _levelCanvasManager: {fileID: 632770950}
 --- !u!850595691 &1948731029
 LightingSettings:

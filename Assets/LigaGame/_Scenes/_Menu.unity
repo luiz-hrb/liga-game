@@ -331,7 +331,7 @@ RectTransform:
   - {fileID: 340145062}
   - {fileID: 141090459}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -489,7 +489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1128901718169999638
 PrefabInstance:
@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 1128901719563786043, guid: bc05582a24515924b9562af30697bf5a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1128901719563786043, guid: bc05582a24515924b9562af30697bf5a,
         type: 3}
@@ -556,7 +556,7 @@ PrefabInstance:
     - target: {fileID: 1128901719563786045, guid: bc05582a24515924b9562af30697bf5a,
         type: 3}
       propertyPath: m_Name
-      value: LevelLoader
+      value: SceneLoader
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc05582a24515924b9562af30697bf5a, type: 3}
@@ -694,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 3880020155100569675, guid: a37e326cb6df1a14eacb2ef188c4f6aa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3880020155100569675, guid: a37e326cb6df1a14eacb2ef188c4f6aa,
         type: 3}

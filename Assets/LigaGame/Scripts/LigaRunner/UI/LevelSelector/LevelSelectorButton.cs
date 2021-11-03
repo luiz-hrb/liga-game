@@ -21,7 +21,6 @@ namespace LigaGame.UI.Menu.LevelSelector
         public void Initialize(LevelData levelData, LevelProgressData levelProgressData, Action onClickAction = null)
         {
             _nameText.text = levelData.Name;
-            _timeText.text = levelProgressData.GameplayTime.FromSecondsToTime();
             _iconImage.sprite = levelData.Icon;
             _scoreMarks.SetScoreItensQuantity(levelData.QuantityStars);
             MarkProgress(levelProgressData);
@@ -37,6 +36,7 @@ namespace LigaGame.UI.Menu.LevelSelector
             if (levelProgressData.Completed)
             {
                 _scoreMarks.SetPoints(levelProgressData.Points);
+                _timeText.text = levelProgressData.GameplayTime.FromSecondsToTime();
             }
             else
             {

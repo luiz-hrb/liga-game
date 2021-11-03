@@ -13,6 +13,7 @@ namespace LigaGame
 {
     public class LevelManager : MonoBehaviour
     {
+        [SerializeField] private ScenesIndex _sceneIndex;
         [SerializeField] private PlayerSpawer _playerSpawer;
         [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
         [SerializeField] private Timer _timer;
@@ -21,7 +22,6 @@ namespace LigaGame
         [SerializeField] private ScoreView _scoreStars;
         [SerializeField] private Healthbar _healthbar;
         [SerializeField] private LevelsData _levelsData;
-        [SerializeField] private ScenesIndex _sceneIndex;
 
         [SerializeField] private LevelCanvasManager _levelCanvasManager;
 
