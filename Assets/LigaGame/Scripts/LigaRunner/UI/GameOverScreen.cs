@@ -7,7 +7,7 @@ using LigaGame.LoadScenes;
 
 namespace LigaGame.UI
 {
-    public class OnDieScreen : ScreenBase
+    public class GameOverScreen : ScreenBase
     {
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _mainMenuButton;

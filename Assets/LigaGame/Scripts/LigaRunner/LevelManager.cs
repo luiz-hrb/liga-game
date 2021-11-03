@@ -22,8 +22,7 @@ namespace LigaGame
         [SerializeField] private LevelsData _levelsData;
         [SerializeField] private ScenesIndex _sceneIndex;
 
-        [SerializeField] ScreenBase _dieScreen;
-        [SerializeField] ScreenBase _winScreen;
+        [SerializeField] private LevelCanvasManager _levelCanvasManager;
 
         private PlayerController _player;
         private LevelData _levelData;
@@ -38,6 +37,7 @@ namespace LigaGame
 
             _scoreStars.SetQuantityMarks(_levelData.QuantityStars);
             _scoreStars.Mark(0);
+            _levelCanvasManager.LevelManager = this;
             
             _timer.StartCount();
             AssignEvents();
@@ -59,13 +59,15 @@ namespace LigaGame
             if (_playerWon)
                 return;
 
-            _dieScreen.Appear(true);
+            _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.GameOver);
             _timer.PauseCount();
         }
 
         private void OnFinishLevel()
         {
-            _winScreen.Appear(true);
+            (int score, int maxScore, float time) screenArgs = (_scoreStars.QuantityMaks, _levelData.QuantityStars, _timer.ElapsedTime);
+            _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.Win, screenArgs);
+
             _timer.PauseCount();
             _playerWon = true;
         }

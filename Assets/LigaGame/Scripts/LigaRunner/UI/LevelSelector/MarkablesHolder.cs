@@ -13,11 +13,21 @@ namespace LigaGame.UI
         private List<Markable> _markables;
         private int _quantityMarks;
 
+        private List<Markable> Markables
+        {
+            get
+            {
+                if (_markables == null)
+                {
+                    _markables = new List<Markable>();
+                }
+                return _markables;
+            }
+        }
         public int QuantityMaks => _quantityMarks;
 
         private void Awake()
         {
-            _markables = new List<Markable>();
             if (_createOnAwake)
             {
                 SetQuantityMarks(_markablesQuantity);
@@ -37,7 +47,7 @@ namespace LigaGame.UI
 
         public void Mark(int quantity)
         {
-            foreach (Markable markable in _markables)
+            foreach (Markable markable in Markables)
             {
                 if (quantity > 0)
                 {
@@ -53,7 +63,7 @@ namespace LigaGame.UI
 
         public void Inactive()
         {
-            foreach (Markable markable in _markables)
+            foreach (Markable markable in Markables)
             {
                 markable.SetState(MarkableState.Inactived);
             }
@@ -61,17 +71,17 @@ namespace LigaGame.UI
 
         private void Clear()
         {
-            foreach (Markable markable in _markables)
+            foreach (Markable markable in Markables)
             {
                 Destroy(markable.gameObject);
             }
-            _markables.Clear();
+            Markables.Clear();
         }
 
         private Markable CreateMarkable()
         {
             Markable markable = Instantiate(_markablePrefab, _markableparent);
-            _markables.Add(markable);
+            Markables.Add(markable);
             return markable;
         }
     }

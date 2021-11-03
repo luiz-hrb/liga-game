@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using LigaGame.ExtensionMethods;
 
 namespace LigaGame.UI
 {
@@ -42,7 +43,7 @@ namespace LigaGame.UI
         {
             _elapsedTime = time;
             TimeSpan timeSpan = TimeSpan.FromSeconds(_elapsedTime);
-            _timeText.text = $"{timeSpan.TotalMinutes:00}:{timeSpan.Seconds:00}";
+            _timeText.text = _elapsedTime.FromSecondsToTime();
         }
     }
 }
