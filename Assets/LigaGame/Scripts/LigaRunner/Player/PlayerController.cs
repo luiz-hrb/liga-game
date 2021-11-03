@@ -15,6 +15,7 @@ namespace LigaGame.Player
         private float _targetVelocityX;
         private bool _isAlive = true;
         private bool _isGrounded;
+        private bool _doubleJumped;
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
         private HealthBehaviour _healthBehaviour;
@@ -51,6 +52,11 @@ namespace LigaGame.Player
 
             _isGrounded = IsGrounded();
             _playerView.IsGrounded(_isGrounded);
+            
+            if (_isGrounded && _doubleJumped)
+            {
+                _doubleJumped = false;
+            }
         }
 
         public void Jump()
@@ -58,7 +64,17 @@ namespace LigaGame.Player
             if (!_isAlive)
                 return;
                 
-            if (_isGrounded)
+            bool canJump = _isGrounded;
+            if (!_isGrounded)
+            {
+                if (!_doubleJumped)
+                {
+                    _doubleJumped = true;
+                    canJump = true;
+                }
+            }
+
+            if (canJump)
             {
                 Vector3 jumpForce = new Vector2(0f, _jumpForce);
                 _rigidbody.AddForce(jumpForce);
