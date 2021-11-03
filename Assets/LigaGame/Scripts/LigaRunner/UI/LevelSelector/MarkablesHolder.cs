@@ -11,6 +11,9 @@ namespace LigaGame.UI
         [SerializeField] private Markable _markablePrefab;
         [SerializeField] private Transform _markableparent;
         private List<Markable> _markables;
+        private int _quantityMarks;
+
+        public int QuantityMaks => _quantityMarks;
 
         private void Awake()
         {
@@ -23,6 +26,7 @@ namespace LigaGame.UI
 
         public void SetQuantityMarks(int quantity)
         {
+            _quantityMarks = quantity;
             Clear();
             for (int markId = 0; markId < quantity; markId++)
             {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _velocity: 10
+  _velocity: 6
 --- !u!1001 &8919165533777888276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21,6 +21,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 698055395389284010, guid: 0aad52a0f746f9d48a1de86d9b9c0608,
+        type: 3}
+      propertyPath: _time
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 698055395389284052, guid: 0aad52a0f746f9d48a1de86d9b9c0608,
         type: 3}
       propertyPath: m_Name

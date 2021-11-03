@@ -46,9 +46,7 @@ namespace LigaGame.Player
 
         private void FixedUpdate()
         {
-            Vector3 velocity = _rigidbody.velocity;
-            velocity.x = _targetVelocityX;
-            _rigidbody.velocity = velocity;
+            ApplyVelocity();
 
             _isGrounded = IsGrounded();
             _playerView.IsGrounded(_isGrounded);
@@ -57,6 +55,13 @@ namespace LigaGame.Player
             {
                 _doubleJumped = false;
             }
+        }
+
+        private void ApplyVelocity()
+        {
+            Vector2 velocity = _rigidbody.velocity;
+            velocity.x = _targetVelocityX;
+            _rigidbody.velocity = velocity;
         }
 
         public void Jump()
@@ -76,10 +81,15 @@ namespace LigaGame.Player
 
             if (canJump)
             {
-                Vector3 jumpForce = new Vector2(0f, _jumpForce);
-                _rigidbody.AddForce(jumpForce);
-                _playerView.Jump();
+                ApplyJumpForce();
             }
+        }
+
+        private void ApplyJumpForce()
+        {
+            Vector3 velocity = _rigidbody.velocity;
+            velocity.y = _jumpForce;
+            _rigidbody.velocity = velocity;
         }
 
         public void Move(float direction)

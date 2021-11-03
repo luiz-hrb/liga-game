@@ -22,14 +22,13 @@ namespace LigaGame
         [SerializeField] private ScenesIndex _sceneIndex;
         private PlayerController _player;
         private LevelData _levelData;
-        private int _starsCollected = 0;
 
         private void Awake()
         {
             _player = _playerSpawer.SpawnPlayer();
             _levelData = _levelsData.GetLevelData(_sceneIndex);
             _cinemachineCamera.Follow = _player.transform;
-            
+
             _scoreStars.SetQuantityMarks(_levelData.QuantityStars);
             _scoreStars.Mark(0);
             
@@ -62,8 +61,7 @@ namespace LigaGame
 
         private void OnStarCollected()
         {
-            _starsCollected++;
-            _scoreStars.Mark(_starsCollected);
+            _scoreStars.Mark(_scoreStars.QuantityMaks + 1);
         }
     }
 }
