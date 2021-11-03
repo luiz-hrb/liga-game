@@ -1,52 +1,96 @@
 using System.Collections;
 using System.Collections.Generic;
 using LigaGame.Save;
-
+using LigaGame.ScriptableObjects;
+using LigaGame.LoadScenes;
 
 [System.Serializable]
 public class PlayerData
 {
-    public LevelProgressData[] levelsProgressData;
+    public LevelProgressData[] LevelsProgressData;
         
-    public void SetLevelsQuantity(int targetLevelsQuantity)
+    public void CheckLevelsData(LevelData[] levelsData)
     {
-        bool changedPlayerData = false;
+        CheckLevelsProgressNull(levelsData);
+        CheckLevelsQuantity(levelsData);
+    }
 
-        if (levelsProgressData == null)
+    private void CheckLevelsProgressNull(LevelData[] levelsData)
+    {
+        if (LevelsProgressData == null)
         {
-            levelsProgressData = new LevelProgressData[targetLevelsQuantity];
-            changedPlayerData = true;
-        }
-        else if (levelsProgressData.Length != targetLevelsQuantity)
-        {
-            var newLevelsProgressData = new LevelProgressData[targetLevelsQuantity];
-            
-            for (int levelId = 0; levelId < levelsProgressData.Length && levelId < targetLevelsQuantity; levelId++)
+            LevelsProgressData = new LevelProgressData[levelsData.Length];
+
+            for (int i = 0; i < LevelsProgressData.Length; i++)
             {
-                newLevelsProgressData[levelId] = levelsProgressData[levelId];
+                LevelsProgressData[i] = new LevelProgressData(levelsData[i].Scene);
             }
-            levelsProgressData = newLevelsProgressData;
-            changedPlayerData = true;
-        }
 
-        if (changedPlayerData)
-        {
             SaveSystem.SavePlayer();
         }
     }
 
-    public bool PopulateNullLevels()
+    private void CheckLevelsQuantity(LevelData[] levelsData)
     {
-        bool dataChanged = false;
-
-        for (int i = 0; i < levelsProgressData.Length; i++)
+        if (LevelsProgressData.Length != levelsData.Length)
         {
-            if (levelsProgressData[i] == null)
+            LevelProgressData[] newLevelsProgressData = new LevelProgressData[levelsData.Length];
+            
+            for (int levelId = 0; levelId < newLevelsProgressData.Length; levelId++)
             {
-                levelsProgressData[i] = new LevelProgressData();
-                dataChanged = true;
+                bool isNewLevel = levelId >= LevelsProgressData.Length;
+
+                if (!isNewLevel)
+                {
+                    newLevelsProgressData[levelId] = LevelsProgressData[levelId];
+                }
+                else
+                {
+                    newLevelsProgressData[levelId] = new LevelProgressData(levelsData[levelId].Scene);
+                }
+            }
+            LevelsProgressData = newLevelsProgressData;
+
+            SaveSystem.SavePlayer();
+        }
+    }
+
+    // public bool PopulateNullLevels()
+    // {
+    //     bool dataChanged = false;
+
+    //     for (int i = 0; i < LevelsProgressData.Length; i++)
+    //     {
+    //         if (LevelsProgressData[i] == null)
+    //         {
+    //             LevelsProgressData[i] = new LevelProgressData();
+    //             dataChanged = true;
+    //         }
+    //     }
+    //     return dataChanged;
+    // }
+
+    public LevelProgressData GetLevelProgressData(ScenesIndex scene)
+    {
+        foreach (LevelProgressData levelProgress in LevelsProgressData)
+        {
+            if (levelProgress.Scene == scene)
+            {
+                return levelProgress;
             }
         }
-        return dataChanged;
+        return null;
+    }
+
+    public void SetLevelProgressData(ScenesIndex scene, LevelProgressData newLevelProgress)
+    {
+        for (int i = 0; i < LevelsProgressData.Length; i++)
+        {
+            if (LevelsProgressData[i].Scene == scene)
+            {
+                LevelsProgressData[i] = newLevelProgress;
+                break;
+            }
+        }
     }
 }

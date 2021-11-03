@@ -65,12 +65,14 @@ namespace LigaGame
 
         private void OnFinishLevel()
         {
-            (int score, int maxScore, float time) screenArgs = (_scoreStars.Points, _levelData.QuantityStars, _timer.ElapsedTime);
-            _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.Win, screenArgs);
+            (int score, int maxScore, float time) scoreData = (_scoreStars.Points, _levelData.QuantityStars, _timer.ElapsedTime);
+            _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.Win, scoreData);
 
             _timer.PauseCount();
             _playerWon = true;
             _player.CanInteract = false;
+            
+            ScoreManager.Submit(scoreData.score, scoreData.time, _levelData);
         }
 
         private void OnStarCollected()

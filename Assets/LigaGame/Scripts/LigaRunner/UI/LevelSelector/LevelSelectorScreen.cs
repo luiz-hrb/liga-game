@@ -22,7 +22,7 @@ namespace LigaGame.UI.Menu.LevelSelector
             _buttons = new List<LevelSelectorButton>();
             _returnButton.onClick.AddListener(Return);
 
-            SaveSystem.PlayerData.SetLevelsQuantity(_levelsData.Levels.Length);
+            SaveSystem.PlayerData.CheckLevelsData(_levelsData.Levels);
         }
 
         private void Start()
@@ -33,7 +33,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         private void CreateButtons()
         {
             ClearButtons();
-            var levelsProgressData = SaveSystem.PlayerData.levelsProgressData;
+            var levelsProgressData = SaveSystem.PlayerData.LevelsProgressData;
 
             for (int i = 0; i < levelsProgressData.Length; i++)
             {

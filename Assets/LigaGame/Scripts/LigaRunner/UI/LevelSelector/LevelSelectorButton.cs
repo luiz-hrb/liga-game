@@ -31,9 +31,9 @@ namespace LigaGame.UI.Menu.LevelSelector
 
         public void MarkProgress(LevelProgressData levelProgressData)
         {
-            if (levelProgressData.completed)
+            if (levelProgressData.Completed)
             {
-                _scoreMarks.SetPoints(levelProgressData.starsCollected);
+                _scoreMarks.SetPoints(levelProgressData.Points);
             }
             else
             {
