@@ -22,6 +22,17 @@ namespace LigaGame.Player
         private const float _extraGoundTestHeigth = 0.1f;
         public UnityEvent OnDeath;
 
+        public float Speed
+        {
+            get => _speed;
+            set => _speed = value;
+        }
+        public float JumpForce
+        {
+            get => _jumpForce;
+            set => _jumpForce = value;
+        }
+
         private void Awake()
         {
             _collider = GetComponentInChildren<Collider2D>();
@@ -98,6 +109,7 @@ namespace LigaGame.Player
         public void Revive()
         {
             _isAlive = true;
+            _playerView.Revive();
         }
     }
 }
