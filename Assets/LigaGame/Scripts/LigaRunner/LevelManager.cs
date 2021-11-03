@@ -18,6 +18,7 @@ namespace LigaGame
         [SerializeField] private Checkpoint _lastCheckpoint;
         [SerializeField] private PowerUp[] _starsToCollect;
         [SerializeField] private MarkablesHolder _scoreStars;
+        [SerializeField] private Healthbar _healthbar;
         [SerializeField] private LevelsData _levelsData;
         [SerializeField] private ScenesIndex _sceneIndex;
         private PlayerController _player;
@@ -26,6 +27,7 @@ namespace LigaGame
         private void Awake()
         {
             _player = _playerSpawer.SpawnPlayer();
+            _healthbar.SetHealthBehaviour(_player.HealthBehaviour);
             _levelData = _levelsData.GetLevelData(_sceneIndex);
             _cinemachineCamera.Follow = _player.transform;
 

@@ -20,6 +20,8 @@ namespace LigaGame.Player
         private Rigidbody2D _rigidbody;
         private HealthBehaviour _healthBehaviour;
 
+        public HealthBehaviour HealthBehaviour =>_healthBehaviour ?? (_healthBehaviour = GetComponent<HealthBehaviour>());
+
         private const float _extraGoundTestHeigth = 0.1f;
         public UnityEvent OnDeath;
 
