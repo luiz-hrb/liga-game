@@ -26,7 +26,6 @@ namespace LigaGame.Ads
         {
             if (Advertisement.IsReady(_adUnitId))
             {
-                _showAdButton.interactable = false;
                 Advertisement.Show(_adUnitId);
             }
         }

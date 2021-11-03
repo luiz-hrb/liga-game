@@ -27,6 +27,7 @@ namespace LigaGame
 
         private PlayerController _player;
         private LevelData _levelData;
+        private bool _playerWon;
 
         private void Awake()
         {
@@ -55,6 +56,9 @@ namespace LigaGame
 
         private void OnPlayerDie()
         {
+            if (_playerWon)
+                return;
+
             _dieScreen.Appear(true);
             _timer.PauseCount();
         }
@@ -63,6 +67,7 @@ namespace LigaGame
         {
             _winScreen.Appear(true);
             _timer.PauseCount();
+            _playerWon = true;
         }
 
         private void OnStarCollected()
