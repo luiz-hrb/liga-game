@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using LigaGame.Model;
 using UnityEngine;
-using UnityEngine.Events;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,10 +8,10 @@ namespace LigaGame.Save
 {
     public static class SaveSystem
     {
-        private static PlayerData _playerData;
+        private static PlayerModel _playerData;
         private const string PLAYER_KEY_NAME = "player";
 
-        public static PlayerData PlayerData
+        public static PlayerModel PlayerData
         {
             get
             {
@@ -31,7 +28,7 @@ namespace LigaGame.Save
             }
         }
 
-        public static void SavePlayer(PlayerData playerData)
+        public static void SavePlayer(PlayerModel playerData)
         {
             _playerData = playerData;
             SavePlayer();
@@ -43,18 +40,18 @@ namespace LigaGame.Save
             PlayerPrefs.SetString(PLAYER_KEY_NAME, playerDataJson);
         }
 
-        public static PlayerData LoadPlayer()
+        public static PlayerModel LoadPlayer()
         {
             string playerDataJson = PlayerPrefs.GetString(PLAYER_KEY_NAME);
-            PlayerData playerData = null;
+            PlayerModel playerData = null;
             
             if (!string.IsNullOrEmpty(playerDataJson))
             {
-                playerData = JsonUtility.FromJson<PlayerData>(playerDataJson);
+                playerData = JsonUtility.FromJson<PlayerModel>(playerDataJson);
             }
             else
             {
-                playerData = new PlayerData();
+                playerData = new PlayerModel();
             }
             return playerData;
         }

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.Advertisements;
 using UnityEngine.Analytics;
 
-namespace LigaGame.Ads
+namespace LigaGame.Services
 {
     public class AdsManager : MonoBehaviour
     {

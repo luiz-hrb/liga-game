@@ -1,18 +1,19 @@
 using UnityEngine;
-using LigaGame.LoadScenes;
+using LigaGame.LoadScene;
+using LigaGame.Model;
 
 namespace LigaGame.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "LevelsData", menuName = "ScriptableObjects/LevelsData", order = 1)]
     public class LevelsData : ScriptableObject
     {
-        [SerializeField] private LevelData[] _levels;
+        [SerializeField] private LevelModel[] _levels;
 
-        public LevelData[] Levels => _levels;
+        public LevelModel[] Levels => _levels;
 
-        public LevelData GetLevelData(ScenesIndex scene)
+        public LevelModel GetLevelData(ScenesIndex scene)
         {
-            foreach (LevelData level in _levels)
+            foreach (LevelModel level in _levels)
             {
                 if (level.Scene == scene)
                 {
@@ -21,14 +22,5 @@ namespace LigaGame.ScriptableObjects
             }
             return null;
         }
-    }
-
-    [System.Serializable]
-    public class LevelData
-    {
-        public string Name;
-        public ScenesIndex Scene;
-        public Sprite Icon;
-        public int QuantityStars = 3;
     }
 }

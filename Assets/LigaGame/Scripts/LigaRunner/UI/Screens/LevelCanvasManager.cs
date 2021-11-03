@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using LigaGame.Level;
 
-namespace LigaGame.UI
+namespace LigaGame.UI.Screens
 {
     public class LevelCanvasManager : ScreenBase
     {

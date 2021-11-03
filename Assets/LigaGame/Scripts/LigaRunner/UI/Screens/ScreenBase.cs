@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LigaGame.UI
+namespace LigaGame.UI.Screens
 {
     public class ScreenBase : MonoBehaviour
     {

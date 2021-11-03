@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LigaGame.LoadScenes;
+using LigaGame.LoadScene;
 using LigaGame.ExtensionMethods;
+using LigaGame.UI.Score;
 using TMPro;
 
-namespace LigaGame.UI
+namespace LigaGame.UI.Screens
 {
     public class OnWinScreen : ScreenBase
     {

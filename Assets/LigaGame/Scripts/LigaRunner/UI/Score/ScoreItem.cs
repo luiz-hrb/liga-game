@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LigaGame.UI
+namespace LigaGame.UI.Score
 {
     public class ScoreItem : MonoBehaviour
     {

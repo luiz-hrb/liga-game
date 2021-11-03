@@ -2,10 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using LigaGame.ScriptableObjects;
+using LigaGame.Model;
+using LigaGame.UI.Score;
 using LigaGame.ExtensionMethods;
 
-namespace LigaGame.UI.Menu.LevelSelector
+namespace LigaGame.UI
 {
     public class LevelSelectorButton : MonoBehaviour
     {
@@ -18,7 +19,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         public Image _IconImage => _iconImage;
         public TextMeshProUGUI _TitleText => _nameText;
 
-        public void Initialize(LevelData levelData, LevelProgressData levelProgressData, Action onClickAction = null)
+        public void Initialize(LevelModel levelData, LevelProgressModel levelProgressData, Action onClickAction = null)
         {
             _nameText.text = levelData.Name;
             _iconImage.sprite = levelData.Icon;
@@ -31,7 +32,7 @@ namespace LigaGame.UI.Menu.LevelSelector
             }
         }
 
-        public void MarkProgress(LevelProgressData levelProgressData)
+        public void MarkProgress(LevelProgressModel levelProgressData)
         {
             if (levelProgressData.Completed)
             {

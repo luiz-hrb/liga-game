@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LigaGame.PowerUps
+namespace LigaGame.PowerUp
 {
     [RequireComponent(typeof(Animator))]
     public sealed class PowerUp : MonoBehaviour

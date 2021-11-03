@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LigaGame.Player;
 
-namespace LigaGame
+namespace LigaGame.Level
 {
     public class PlayerSpawer : MonoBehaviour
     {

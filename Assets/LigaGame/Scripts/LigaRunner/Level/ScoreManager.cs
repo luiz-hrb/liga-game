@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using LigaGame.LoadScenes;
 using LigaGame.Save;
-using LigaGame.ScriptableObjects;
+using LigaGame.Model;
 
-namespace LigaGame
+namespace LigaGame.Level
 {
     public static class ScoreManager
     {
-        public static void Submit(int points, float time, LevelData levelData)
+        public static void Submit(int points, float time, LevelModel levelData)
         {
-            LevelProgressData levelProgressData = SaveSystem.PlayerData.GetLevelProgressData(levelData.Scene);
+            LevelProgressModel levelProgressData = SaveSystem.PlayerData.GetLevelProgressModel(levelData.Scene);
 
             if (!levelProgressData.Completed
                 || levelProgressData.Points < points

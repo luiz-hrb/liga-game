@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using LigaGame.Player;
 
-namespace LigaGame
+namespace LigaGame.Level
 {
     public class Checkpoint : MonoBehaviour
     {

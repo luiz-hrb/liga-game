@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace LigaGame.LoadScenes
+namespace LigaGame.LoadScene
 {
     public enum ScenesIndex
     {

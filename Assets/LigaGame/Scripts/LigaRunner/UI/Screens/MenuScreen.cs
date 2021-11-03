@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 
-namespace LigaGame.UI.Menu
+namespace LigaGame.UI.Screens
 {
     public sealed class MenuScreen : ScreenBase
     {

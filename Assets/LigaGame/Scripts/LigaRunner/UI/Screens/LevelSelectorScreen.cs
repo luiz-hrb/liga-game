@@ -1,13 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using LigaGame.Save;
 using LigaGame.ScriptableObjects;
-using LigaGame.LoadScenes;
+using LigaGame.LoadScene;
+using LigaGame.Model;
 
-namespace LigaGame.UI.Menu.LevelSelector
+namespace LigaGame.UI.Screens
 {
     public class LevelSelectorScreen : ScreenBase
     {
@@ -38,15 +38,15 @@ namespace LigaGame.UI.Menu.LevelSelector
 
             for (int i = 0; i < levelsProgressData.Length; i++)
             {
-                LevelData levelData = _levelsData.Levels[i];
-                LevelProgressData levelProgressData = levelsProgressData[i];
+                LevelModel levelData = _levelsData.Levels[i];
+                LevelProgressModel levelProgressData = levelsProgressData[i];
 
                 LevelSelectorButton button = CreateButton(levelData, levelProgressData);
                 _buttons.Add(button);
             }
         }
 
-        private LevelSelectorButton CreateButton(LevelData levelData, LevelProgressData levelProgressData)
+        private LevelSelectorButton CreateButton(LevelModel levelData, LevelProgressModel levelProgressData)
         {
             var button = Instantiate(_levelButtonPrefab, _levelButtonParent);
             button.Initialize(levelData, levelProgressData, () => {

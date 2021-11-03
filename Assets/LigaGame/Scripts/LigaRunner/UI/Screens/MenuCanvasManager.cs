@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace LigaGame.UI.UI.Menu
+namespace LigaGame.UI.Screens
 {
     public class MenuCanvasManager : ScreenBase
     {

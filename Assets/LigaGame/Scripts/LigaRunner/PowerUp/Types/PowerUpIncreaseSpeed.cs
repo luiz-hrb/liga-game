@@ -1,7 +1,7 @@
 using UnityEngine;
 using LigaGame.Player;
 
-namespace LigaGame.PowerUps
+namespace LigaGame.PowerUp
 {
     public sealed class PowerUpIncreaseSpeed : PowerUpBehaviour
     {

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LigaGame.Health;
 
-namespace LigaGame
+namespace LigaGame.Level
 {
     public class Obstacle : MonoBehaviour
     {

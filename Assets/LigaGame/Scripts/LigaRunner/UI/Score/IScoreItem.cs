@@ -1,4 +1,4 @@
-namespace LigaGame.UI
+namespace LigaGame.UI.Score
 {
     public interface IScoreItem
     {

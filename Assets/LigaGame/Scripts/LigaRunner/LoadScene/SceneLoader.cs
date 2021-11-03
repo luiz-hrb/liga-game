@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace LigaGame.LoadScenes
+namespace LigaGame.LoadScene
 {
     public sealed class SceneLoader : MonoBehaviour
     {

@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LigaGame.UI
+namespace LigaGame.UI.Score
 {
     public class ScoreView : MonoBehaviour
     {

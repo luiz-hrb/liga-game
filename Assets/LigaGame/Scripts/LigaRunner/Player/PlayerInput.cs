@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,14 +29,6 @@ namespace LigaGame.Player
             _jumpAction.started += JumpAction;
             _jumpAction.Enable();
         }
-
-        // private void EnableInputAction(InputAction action, Action<InputAction.CallbackContext> callback)
-        // {
-        //     action.started += callback;
-        //     action.performed += callback;
-        //     action.canceled += callback;
-        //     action.Enable();
-        // }
 
         private void MovementAction(InputAction.CallbackContext context)
         {

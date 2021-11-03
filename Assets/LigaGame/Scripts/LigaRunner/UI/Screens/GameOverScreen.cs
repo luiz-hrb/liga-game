@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LigaGame.LoadScenes;
+using LigaGame.LoadScene;
 
-namespace LigaGame.UI
+namespace LigaGame.UI.Screens
 {
     public class GameOverScreen : ScreenBase
     {
