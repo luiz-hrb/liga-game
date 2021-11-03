@@ -21,6 +21,10 @@ namespace LigaGame
         [SerializeField] private Healthbar _healthbar;
         [SerializeField] private LevelsData _levelsData;
         [SerializeField] private ScenesIndex _sceneIndex;
+
+        [SerializeField] ScreenBase _dieScreen;
+        [SerializeField] ScreenBase _winScreen;
+
         private PlayerController _player;
         private LevelData _levelData;
 
@@ -51,13 +55,13 @@ namespace LigaGame
 
         private void OnPlayerDie()
         {
-            Debug.Log("Player died");
+            _dieScreen.Appear(true);
             _timer.PauseCount();
         }
 
         private void OnFinishLevel()
         {
-            Debug.Log("Finished level");
+            _winScreen.Appear(true);
             _timer.PauseCount();
         }
 

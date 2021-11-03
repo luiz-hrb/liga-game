@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace LigaGame.UI
 {
-    public class Screen : MonoBehaviour
+    public class ScreenBase : MonoBehaviour
     {
-        [SerializeField] protected Screen[] _subScreens;
-        private Screen _parent;
+        [SerializeField] protected ScreenBase[] _subScreens;
+        private ScreenBase _parent;
         protected int _currentScreenId;
         protected bool _appearing;
 
-        public Screen Parent => _parent;
+        public ScreenBase Parent => _parent;
         public bool Appearing => _appearing;
 
         public const string _returnNotification = "return";
@@ -22,7 +22,7 @@ namespace LigaGame.UI
 
         protected void InitializeChilds()
         {
-            foreach (Screen screen in _subScreens)
+            foreach (ScreenBase screen in _subScreens)
             {
                 screen._parent = this;
             }
@@ -36,7 +36,7 @@ namespace LigaGame.UI
         public void OpenScreen(int screenToOpenId, object args)
         {
             _currentScreenId = screenToOpenId;
-            Screen screenToOpen = null;
+            ScreenBase screenToOpen = null;
 
             if (_currentScreenId >= 0)
             {
@@ -46,11 +46,11 @@ namespace LigaGame.UI
             OpenScreen(screenToOpen, args);
         }
 
-        private void OpenScreen(Screen screenToOpen, object args)
+        private void OpenScreen(ScreenBase screenToOpen, object args)
         {
-            List<Screen> screensAnalyzed = new List<Screen>();
+            List<ScreenBase> screensAnalyzed = new List<ScreenBase>();
 
-            foreach (Screen screen in _subScreens)
+            foreach (ScreenBase screen in _subScreens)
             {
                 if (!screensAnalyzed.Contains(screen))
                 {
@@ -65,7 +65,7 @@ namespace LigaGame.UI
             }
         }
 
-        protected int GetChildId(Screen child)
+        protected int GetChildId(ScreenBase child)
         {
             for (int i = 0; i < _subScreens.Length; i++)
             {
@@ -116,7 +116,7 @@ namespace LigaGame.UI
             }
         }
 
-        protected virtual void NotificationReceived(Screen child, string notification = null)
+        protected virtual void NotificationReceived(ScreenBase child, string notification = null)
         {
 
         }

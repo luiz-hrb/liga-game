@@ -8,7 +8,7 @@ using LigaGame.LoadScenes;
 
 namespace LigaGame.UI.Menu.LevelSelector
 {
-    public class LevelSelectorScreen : Screen
+    public class LevelSelectorScreen : ScreenBase
     {
         [SerializeField] private LevelsData _levelsData;
         [SerializeField] private LevelSelectorButton _levelButtonPrefab;
@@ -48,7 +48,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         private LevelSelectorButton CreateButton(LevelData levelData, LevelProgressData levelProgressData)
         {
             var button = Instantiate(_levelButtonPrefab, _levelButtonParent);
-            button.Initialize(levelData, levelProgressData, () => LevelLoader.Instance.LoadLevelAsync(levelData.Scene));
+            button.Initialize(levelData, levelProgressData, () => SceneLoader.Instance.LoadLevelAsync(levelData.Scene));
             return button;
         }
 

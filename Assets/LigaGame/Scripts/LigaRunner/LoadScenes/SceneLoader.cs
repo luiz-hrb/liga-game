@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement;
 
 namespace LigaGame.LoadScenes
 {
-    public sealed class LevelLoader : MonoBehaviour
+    public sealed class SceneLoader : MonoBehaviour
     {
         private AsyncOperation _asyncLoadScene;
         private WaitForSeconds _waitBeforeLoadScene;
-        public static LevelLoader _instance;
-        public static LevelLoader Instance
+        private static SceneLoader _instance;
+        public static SceneLoader Instance
         {
             get => _instance;
             private set => _instance = value;
@@ -35,6 +35,11 @@ namespace LigaGame.LoadScenes
             _waitBeforeLoadScene = new WaitForSeconds(1f);
         }
 
+        public void ReloadThisScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         public void LoadLevelAsync(ScenesIndex level)
         {
             StartCoroutine(LoadAsync((int)level));
@@ -55,7 +60,7 @@ namespace LigaGame.LoadScenes
 
             yield return _waitBeforeLoadScene;
 
-            ActiveScene(LevelLoader.Instance._asyncLoadScene);
+            ActiveScene(SceneLoader.Instance._asyncLoadScene);
 
             yield return _waitBeforeLoadScene;
         }

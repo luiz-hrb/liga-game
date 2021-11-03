@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace LigaGame.UI.Menu
 {
-    public sealed class MenuScreen : Screen
+    public sealed class MenuScreen : ScreenBase
     {
         [SerializeField] Button _buttonPlay;
         [SerializeField] Button _buttonQuit;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LigaGame.UI.UI.Menu
 {
-    public class MenuCanvasManager : Screen
+    public class MenuCanvasManager : ScreenBase
     {
         public enum ScreenType
         {
@@ -17,7 +17,7 @@ namespace LigaGame.UI.UI.Menu
             OpenScreen((int)ScreenType.MainMenu);
         }
 
-        protected override void NotificationReceived(Screen child, string notification = null)
+        protected override void NotificationReceived(ScreenBase child, string notification = null)
         {
             int childId = GetChildId(child);
             switch (childId)
