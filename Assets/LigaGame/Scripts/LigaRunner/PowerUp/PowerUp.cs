@@ -9,9 +9,6 @@ namespace LigaGame.PowerUp
     public sealed class PowerUp : MonoBehaviour
     {
         [SerializeField] private float _time = 10f;
-        [SerializeField] private GameObject _view;
-        [SerializeField] private AudioClip _clip_appear;
-        [SerializeField] private AudioClip _clip_disappear;
         public UnityEvent OnTake;
         private PowerUpTarget _target;
         private Animator _animator;
@@ -68,26 +65,14 @@ namespace LigaGame.PowerUp
             Destroy();
         }
 
-        private void PlayAudioClip(AudioClip clip)
-        {
-            if (_audioSource)
-            {
-                _audioSource.clip = clip;
-                _audioSource.Play();
-            }
-        }
-
         public void SetVisible(bool isVisible)
         {
             _animator.SetBool("IsVisible", isVisible);
             
-            if (isVisible)
+            if (!isVisible)
             {
-                PlayAudioClip(_clip_appear);
-            }
-            else
-            {
-                PlayAudioClip(_clip_disappear);
+                if (_audioSource)
+                    _audioSource.Play();
             }
         }
 
