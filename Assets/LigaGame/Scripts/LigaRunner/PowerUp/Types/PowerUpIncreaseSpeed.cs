@@ -1,11 +1,11 @@
 using UnityEngine;
 using LigaGame.Player;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     public sealed class PowerUpIncreaseSpeed : PowerUpBehaviour
     {
-        [SerializeField] private float _velocity = 5f;
+        [SerializeField] private float _velocity = 8f;
         private float _velocityDefault;
         private PlayerController _player;
 

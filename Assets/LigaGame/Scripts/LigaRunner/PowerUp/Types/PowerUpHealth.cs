@@ -1,7 +1,7 @@
 using LigaGame.Health;
 using UnityEngine;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     public sealed class PowerUpHealth : PowerUpBehaviour
     {

@@ -1,11 +1,11 @@
 using UnityEngine;
 using LigaGame.Player;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
-    public sealed class PowerUpIncreaseVelocity : PowerUpBehaviour
+    public sealed class PowerUpIncreaseJumpForce : PowerUpBehaviour
     {
-        [SerializeField] private float _jumpForce = 5f;
+        [SerializeField] private float _jumpForce = 600f;
         private float _jumpForceDefault;
         private PlayerController _player;
 

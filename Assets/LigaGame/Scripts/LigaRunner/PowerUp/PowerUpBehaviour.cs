@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     public class PowerUpBehaviour : MonoBehaviour
     {
-        public enum Type { IncreaseVelocity, IncreaseDamage, RecoverHealth }
+        public enum Type { IncreaseSpeed, IncreaseJumpForce, RecoverHealth }
         
         [SerializeField] private Type _type;
         private PowerUpTarget _target;

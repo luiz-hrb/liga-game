@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     [RequireComponent(typeof(Animator))]
     public sealed class PowerUp : MonoBehaviour
     {
         [SerializeField] private float _time = 10f;
-        public UnityEvent OnTake;
         private PowerUpTarget _target;
         private Animator _animator;
         private AudioSource _audioSource;
         private bool _executed;
 
+        public UnityEvent OnTake;
+        
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();

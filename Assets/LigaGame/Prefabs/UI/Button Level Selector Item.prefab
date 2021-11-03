@@ -214,10 +214,7 @@ MonoBehaviour:
   _nameText: {fileID: 4489056017445607237}
   _iconImage: {fileID: 4489056016004125357}
   _button: {fileID: 4489056017133980818}
-  _scoreMarcs:
-  - {fileID: 3603067781376623511}
-  - {fileID: 5609619836613569159}
-  - {fileID: 9159194386069806069}
+  _scoreMarks: {fileID: 5544854949709725978}
 --- !u!1 &4489056017445607227
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244410581879579924}
   - component: {fileID: 6998272776306610140}
+  - component: {fileID: 5544854949709725978}
   m_Layer: 5
   m_Name: Stars
   m_TagString: Untagged
@@ -417,6 +415,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &5544854949709725978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940329647061253846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3420d1f8cdd16b845a94cae3bda0ba12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markables:
+  - {fileID: 3603067781376623511}
+  - {fileID: 5609619836613569159}
+  - {fileID: 9159194386069806069}
 --- !u!1001 &3071750212442528494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -532,7 +546,7 @@ PrefabInstance:
     - target: {fileID: 7876920921493171562, guid: dc0de5297d436334b84ca5a1c1a11cc0,
         type: 3}
       propertyPath: m_Name
-      value: star
+      value: star (0)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc0de5297d436334b84ca5a1c1a11cc0, type: 3}

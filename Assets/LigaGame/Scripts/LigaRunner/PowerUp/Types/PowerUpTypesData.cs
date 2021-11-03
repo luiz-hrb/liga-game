@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     [CreateAssetMenu(fileName = "PowerUpTypesData", menuName = "tanks/PowerUpTypesData", order = 0)]
     public sealed class PowerUpTypesData : ScriptableObject

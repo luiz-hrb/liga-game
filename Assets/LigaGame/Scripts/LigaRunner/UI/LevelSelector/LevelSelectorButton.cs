@@ -11,7 +11,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private Image _iconImage;
         [SerializeField] private Button _button;
-        [SerializeField] private Markable[] _scoreMarcs;
+        [SerializeField] private MarkablesHolder _scoreMarks;
 
         public Image _IconImage => _iconImage;
         public TextMeshProUGUI _TitleText => _nameText;
@@ -30,19 +30,13 @@ namespace LigaGame.UI.Menu.LevelSelector
 
         public void MarkProgress(LevelProgressData levelProgressData)
         {
-            for (int scoreMarkId = 0; scoreMarkId < _scoreMarcs.Length; scoreMarkId++)
+            if (levelProgressData.completed)
             {
-                Markable mark = _scoreMarcs[scoreMarkId];
-                
-                if (levelProgressData.completed)
-                {
-                    bool willMarkThisStar = scoreMarkId < levelProgressData.starsCollected;
-                    mark.SetState(willMarkThisStar ? MarkableState.Marked : MarkableState.Unmarked);
-                }
-                else
-                {
-                    mark.SetState(MarkableState.Inactived);
-                }
+                _scoreMarks.Mark(levelProgressData.starsCollected);
+            }
+            else
+            {
+                _scoreMarks.Inactive();
             }
         }
     }
