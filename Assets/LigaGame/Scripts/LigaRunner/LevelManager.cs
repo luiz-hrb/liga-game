@@ -17,7 +17,7 @@ namespace LigaGame
         [SerializeField] private Timer _timer;
         [SerializeField] private Checkpoint _lastCheckpoint;
         [SerializeField] private PowerUp[] _starsToCollect;
-        [SerializeField] private MarkablesHolder _scoreStars;
+        [SerializeField] private ScoreView _scoreStars;
         [SerializeField] private Healthbar _healthbar;
         [SerializeField] private LevelsData _levelsData;
         [SerializeField] private ScenesIndex _sceneIndex;
@@ -35,8 +35,8 @@ namespace LigaGame
             _levelData = _levelsData.GetLevelData(_sceneIndex);
             _cinemachineCamera.Follow = _player.transform;
 
-            _scoreStars.SetQuantityMarks(_levelData.QuantityStars);
-            _scoreStars.Mark(0);
+            _scoreStars.SetScoreItensQuantity(_levelData.QuantityStars);
+            _scoreStars.SetPoints(0);
             _levelCanvasManager.LevelManager = this;
             
             _timer.StartCount();
@@ -65,16 +65,17 @@ namespace LigaGame
 
         private void OnFinishLevel()
         {
-            (int score, int maxScore, float time) screenArgs = (_scoreStars.QuantityMaks, _levelData.QuantityStars, _timer.ElapsedTime);
+            (int score, int maxScore, float time) screenArgs = (_scoreStars.Points, _levelData.QuantityStars, _timer.ElapsedTime);
             _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.Win, screenArgs);
 
             _timer.PauseCount();
             _playerWon = true;
+            _player.CanInteract = false;
         }
 
         private void OnStarCollected()
         {
-            _scoreStars.Mark(_scoreStars.QuantityMaks + 1);
+            _scoreStars.SetPoints(_scoreStars.Points + 1);
         }
     }
 }

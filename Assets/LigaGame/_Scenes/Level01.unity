@@ -5464,20 +5464,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99d7504e156188745aa23cd54ea6c045, type: 3}
---- !u!114 &9152777338777834800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9152777338777834802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3afc6b888bb989447af6b55490634484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeText: {fileID: 0}
-  _isCounting: 0
 --- !u!1 &9152777338777834802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5487,9 +5473,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9152777338777834803}
-  - component: {fileID: 9152777338777834800}
   m_Layer: 5
-  m_Name: Stars collected
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

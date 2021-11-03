@@ -11,7 +11,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private Image _iconImage;
         [SerializeField] private Button _button;
-        [SerializeField] private MarkablesHolder _scoreMarks;
+        [SerializeField] private ScoreView _scoreMarks;
 
         public Image _IconImage => _iconImage;
         public TextMeshProUGUI _TitleText => _nameText;
@@ -20,7 +20,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         {
             _nameText.text = levelData.Name;
             _iconImage.sprite = levelData.Icon;
-            _scoreMarks.SetQuantityMarks(levelData.QuantityStars);
+            _scoreMarks.SetScoreItensQuantity(levelData.QuantityStars);
             MarkProgress(levelProgressData);
 
             if (onClickAction != null)
@@ -33,7 +33,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         {
             if (levelProgressData.completed)
             {
-                _scoreMarks.Mark(levelProgressData.starsCollected);
+                _scoreMarks.SetPoints(levelProgressData.starsCollected);
             }
             else
             {

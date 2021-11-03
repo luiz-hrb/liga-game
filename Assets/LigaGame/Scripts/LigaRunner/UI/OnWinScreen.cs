@@ -12,7 +12,7 @@ namespace LigaGame.UI
     public class OnWinScreen : ScreenBase
     {
         [SerializeField] private TextMeshProUGUI _timeText;
-        [SerializeField] private MarkablesHolder _scoreStars;
+        [SerializeField] private ScoreView _scoreStars;
         [SerializeField] private Button _mainMenuButton;
 
         private new void Awake()
@@ -39,13 +39,13 @@ namespace LigaGame.UI
             {
                 (int score, int maxScore, float time) screenArgs = ((int, int, float)) args;
                 _timeText.text = screenArgs.time.FromSecondsToTime();
-                _scoreStars.SetQuantityMarks(screenArgs.maxScore);
-                _scoreStars.Mark(screenArgs.score);
+                _scoreStars.SetScoreItensQuantity(screenArgs.maxScore);
+                _scoreStars.SetPoints(screenArgs.score);
             }
             else
             {
                 _timeText.text = 0f.FromSecondsToTime();
-                _scoreStars.SetQuantityMarks(0);
+                _scoreStars.SetScoreItensQuantity(0);
             }
         }
     }

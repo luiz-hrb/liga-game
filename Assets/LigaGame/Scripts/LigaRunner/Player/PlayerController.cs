@@ -14,6 +14,7 @@ namespace LigaGame.Player
         [SerializeField] private PlayerView _playerView;
         private float _targetVelocityX;
         private bool _isAlive = true;
+        private bool _canInteract = true;
         private bool _isGrounded;
         private bool _doubleJumped;
         private Collider2D _collider;
@@ -34,6 +35,15 @@ namespace LigaGame.Player
         {
             get => _jumpForce;
             set => _jumpForce = value;
+        }
+        public bool CanInteract
+        {
+            get => _canInteract && _isAlive;
+            set
+            {
+                Move(0f);
+                _canInteract = value;
+            }
         }
 
         private void Awake()
@@ -68,7 +78,7 @@ namespace LigaGame.Player
 
         public void Jump()
         {
-            if (!_isAlive)
+            if (!CanInteract)
                 return;
                 
             bool canJump = _isGrounded;
@@ -96,7 +106,7 @@ namespace LigaGame.Player
 
         public void Move(float direction)
         {
-            if (!_isAlive)
+            if (!CanInteract)
                 return;
 
             _targetVelocityX = direction * _speed;

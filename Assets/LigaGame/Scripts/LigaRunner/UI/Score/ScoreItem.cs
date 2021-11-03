@@ -3,31 +3,31 @@ using UnityEngine.UI;
 
 namespace LigaGame.UI
 {
-    public class Markable : MonoBehaviour
+    public class ScoreItem : MonoBehaviour
     {
         [SerializeField] float _alphaMarked = 1f;
         [SerializeField] float _alphaUnmarked = 0.5f;
         [SerializeField] Image _image;
 
-        public void SetState(MarkableState state)
+        public void SetState(ScoreItemState state)
         {
             switch (state)
             {
-                case MarkableState.Marked:
+                case ScoreItemState.Marked:
                 {
                     Active(true);
                     SetAlphaColor(_alphaMarked);
                     break;
                 }
 
-                case MarkableState.Unmarked:
+                case ScoreItemState.Unmarked:
                 {
                     Active(true);
                     SetAlphaColor(_alphaUnmarked);
                     break;
                 }
 
-                case MarkableState.Inactived:
+                case ScoreItemState.Inactived:
                 {
                     Active(false);
                     break;
