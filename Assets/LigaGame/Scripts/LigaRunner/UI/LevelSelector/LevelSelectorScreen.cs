@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LigaGame.UI.Save;
+using LigaGame.Save;
 using LigaGame.ScriptableObjects;
 using LigaGame.LoadScenes;
 

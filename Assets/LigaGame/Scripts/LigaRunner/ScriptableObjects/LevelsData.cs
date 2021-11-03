@@ -9,6 +9,18 @@ namespace LigaGame.ScriptableObjects
         [SerializeField] private LevelData[] _levels;
 
         public LevelData[] Levels => _levels;
+
+        public LevelData GetLevelData(ScenesIndex scene)
+        {
+            foreach (LevelData level in _levels)
+            {
+                if (level.Scene == scene)
+                {
+                    return level;
+                }
+            }
+            return null;
+        }
     }
 
     [System.Serializable]
@@ -17,5 +29,6 @@ namespace LigaGame.ScriptableObjects
         public string Name;
         public ScenesIndex Scene;
         public Sprite Icon;
+        public int QuantityStars = 3;
     }
 }

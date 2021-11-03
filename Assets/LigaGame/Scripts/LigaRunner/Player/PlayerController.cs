@@ -117,6 +117,7 @@ namespace LigaGame.Player
             if (!_isAlive)
                 return;
                 
+            _targetVelocityX = 0f;
             _isAlive = false;
             _playerView.Died();
             OnDeath.Invoke();

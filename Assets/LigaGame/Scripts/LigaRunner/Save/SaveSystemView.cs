@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace LigaGame.UI.Save
+namespace LigaGame.Save
 {
     public class SaveSystemView : MonoBehaviour
     {

@@ -6,11 +6,34 @@ namespace LigaGame.UI
 {
     public class MarkablesHolder : MonoBehaviour
     {
-        [SerializeField] private List<Markable> markables;
+        [SerializeField] private int _markablesQuantity = 3;
+        [SerializeField] private bool _createOnAwake = true;
+        [SerializeField] private Markable _markablePrefab;
+        [SerializeField] private Transform _markableparent;
+        private List<Markable> _markables;
+
+        private void Awake()
+        {
+            _markables = new List<Markable>();
+            if (_createOnAwake)
+            {
+                SetQuantityMarks(_markablesQuantity);
+            }
+        }
+
+        public void SetQuantityMarks(int quantity)
+        {
+            Clear();
+            for (int markId = 0; markId < quantity; markId++)
+            {
+                Markable markable = CreateMarkable();
+                markable.SetState(MarkableState.Unmarked);
+            }
+        }
 
         public void Mark(int quantity)
         {
-            foreach (Markable markable in markables)
+            foreach (Markable markable in _markables)
             {
                 if (quantity > 0)
                 {
@@ -26,10 +49,26 @@ namespace LigaGame.UI
 
         public void Inactive()
         {
-            foreach (Markable markable in markables)
+            foreach (Markable markable in _markables)
             {
                 markable.SetState(MarkableState.Inactived);
             }
+        }
+
+        private void Clear()
+        {
+            foreach (Markable markable in _markables)
+            {
+                Destroy(markable.gameObject);
+            }
+            _markables.Clear();
+        }
+
+        private Markable CreateMarkable()
+        {
+            Markable markable = Instantiate(_markablePrefab, _markableparent);
+            _markables.Add(markable);
+            return markable;
         }
     }
 }

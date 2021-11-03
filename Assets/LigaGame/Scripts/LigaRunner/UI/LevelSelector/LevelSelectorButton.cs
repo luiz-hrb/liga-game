@@ -20,6 +20,7 @@ namespace LigaGame.UI.Menu.LevelSelector
         {
             _nameText.text = levelData.Name;
             _iconImage.sprite = levelData.Icon;
+            _scoreMarks.SetQuantityMarks(levelData.QuantityStars);
             MarkProgress(levelProgressData);
 
             if (onClickAction != null)

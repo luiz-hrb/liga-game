@@ -5,6 +5,8 @@ using LigaGame.Player;
 using LigaGame.UI;
 using Cinemachine;
 using LigaGame.PowerUps;
+using LigaGame.ScriptableObjects;
+using LigaGame.LoadScenes;
 
 namespace LigaGame
 {
@@ -15,13 +17,21 @@ namespace LigaGame
         [SerializeField] private Timer _timer;
         [SerializeField] private Checkpoint _lastCheckpoint;
         [SerializeField] private PowerUp[] _starsToCollect;
+        [SerializeField] private MarkablesHolder _scoreStars;
+        [SerializeField] private LevelsData _levelsData;
+        [SerializeField] private ScenesIndex _sceneIndex;
         private PlayerController _player;
+        private LevelData _levelData;
         private int _starsCollected = 0;
 
         private void Awake()
         {
             _player = _playerSpawer.SpawnPlayer();
+            _levelData = _levelsData.GetLevelData(_sceneIndex);
             _cinemachineCamera.Follow = _player.transform;
+            
+            _scoreStars.SetQuantityMarks(_levelData.QuantityStars);
+            _scoreStars.Mark(0);
             
             _timer.StartCount();
             AssignEvents();
@@ -53,6 +63,7 @@ namespace LigaGame
         private void OnStarCollected()
         {
             _starsCollected++;
+            _scoreStars.Mark(_starsCollected);
         }
     }
 }
