@@ -28,11 +28,13 @@ namespace LigaGame
         private void OnPlayerDie()
         {
             Debug.Log("Player died");
+            _timer.StopCount();
         }
 
         private void OnFinishLevel()
         {
             Debug.Log("Finished level");
+            _timer.StopCount();
         }
     }
 }
