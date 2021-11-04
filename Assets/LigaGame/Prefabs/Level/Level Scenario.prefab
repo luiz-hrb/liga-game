@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7576787004233517354}
   - component: {fileID: 7576787004233517353}
+  - component: {fileID: 330334970866934422}
   m_Layer: 0
   m_Name: Level Scenario
   m_TagString: Untagged
@@ -54,11 +55,24 @@ MonoBehaviour:
   _levelManagerView: {fileID: 0}
   _playerSpawer: {fileID: 7576787004932899442}
   _onCompleteLevelCheckpoint: {fileID: 7576787004941771479}
+  _levelsData: {fileID: 11400000, guid: 19e93913bb39b8a409dc53280773db03, type: 2}
+--- !u!114 &330334970866934422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576787004233517355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b749dd800ec4ad64b9998d5d974b16a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _pointsToCollect:
   - {fileID: 7863448743372933633}
   - {fileID: 470900638297286904}
   - {fileID: 654463521165744226}
-  _levelsData: {fileID: 11400000, guid: 19e93913bb39b8a409dc53280773db03, type: 2}
+  _levelManager: {fileID: 7576787004233517353}
 --- !u!1 &7576787004848712382
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +906,7 @@ GameObject:
   - component: {fileID: 7576787006060703012}
   - component: {fileID: 7576787006060703011}
   m_Layer: 0
-  m_Name: start
+  m_Name: start wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,6 +1524,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2846ea3ad1880842ae4b95d471178d1, type: 3}
+--- !u!4 &7576787004932899443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3629991983717911495, guid: a2846ea3ad1880842ae4b95d471178d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6577073881374771636}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7576787004932899442 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3629991983717911494, guid: a2846ea3ad1880842ae4b95d471178d1,
@@ -1522,12 +1542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2477b08ef2d464fb88e1dff79d09cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7576787004932899443 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3629991983717911495, guid: a2846ea3ad1880842ae4b95d471178d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6577073881374771636}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7576787004643217058
 PrefabInstance:
   m_ObjectHideFlags: 0

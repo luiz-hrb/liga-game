@@ -7,7 +7,6 @@ using LigaGame.UI.Screens;
 using LigaGame.Model;
 using LigaGame.ScriptableObjects;
 using LigaGame.LoadScene;
-using LigaGame.PowerUps;
 
 namespace LigaGame.Level
 {
@@ -17,7 +16,6 @@ namespace LigaGame.Level
         [SerializeField] private LevelManagerView _levelManagerView;
         [SerializeField] private Spawner _playerSpawer;
         [SerializeField] private Checkpoint _onCompleteLevelCheckpoint;
-        [SerializeField] private PowerUp[] _pointsToCollect;
         [SerializeField] private LevelsData _levelsData;
 
         private PlayerController _player;
@@ -39,10 +37,16 @@ namespace LigaGame.Level
             _player.OnDeath.AddListener(() => OnPlayerDie());
             _onCompleteLevelCheckpoint.OnCheckpointReached.AddListener(() => OnFinishLevel());
 
-            foreach (PowerUps.PowerUp point in _pointsToCollect)
+        }
+
+        public void AddPoints(int points)
+        {
+           _levelManagerView.ScorePoints.SetPoints(_levelManagerView.ScorePoints.Points + points);
+            
+            Analytics.CustomEvent("CollectedStar", new Dictionary<string, object>
             {
-                point.OnTake.AddListener(() => OnPointCollected());
-            }
+                { "Level", _levelModel.name },
+            });
         }
 
         private void OnPlayerDie()
@@ -83,16 +87,6 @@ namespace LigaGame.Level
             
             _levelManagerView.OpenScreen((int)LevelManagerView.ScreenType.LevelCompleted, scoreModel);
             ScoreManager.Submit(scoreModel, _levelModel);
-        }
-
-        private void OnPointCollected()
-        {
-           _levelManagerView.ScorePoints.SetPoints(_levelManagerView.ScorePoints.Points + 1);
-            
-            Analytics.CustomEvent("CollectedStar", new Dictionary<string, object>
-            {
-                { "Level", _levelModel.name },
-            });
         }
     }
 }

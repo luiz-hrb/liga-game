@@ -8,14 +8,12 @@ namespace LigaGame.LoadScene
     {
         private AsyncOperation _asyncLoadScene;
         private WaitForSeconds _waitBeforeLoadScene;
-        private static SceneLoader _instance;
-        public static SceneLoader Instance
-        {
-            get => _instance;
-            private set => _instance = value;
-        }
+        private const float _timeBeforeLoadScene = 0.5f;
+        private const float _minimumLoadProgress = 0.9f;
+        
+        public static SceneLoader Instance { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             if (Instance != null)
             {
@@ -26,13 +24,13 @@ namespace LigaGame.LoadScene
                 Instance = this;
             }
 
-            Setup();
+            Initialize();
         }
 
-        private void Setup()
+        private void Initialize()
         {
             DontDestroyOnLoad(gameObject);
-            _waitBeforeLoadScene = new WaitForSeconds(1f);
+            _waitBeforeLoadScene = new WaitForSeconds(_timeBeforeLoadScene);
         }
 
         public void ReloadThisScene()
@@ -53,14 +51,14 @@ namespace LigaGame.LoadScene
             _asyncLoadScene = SceneManager.LoadSceneAsync(nextLevelId);
             _asyncLoadScene.allowSceneActivation = false;
 
-            while (_asyncLoadScene.progress < 0.9f)
+            while (_asyncLoadScene.progress < _minimumLoadProgress)
             {
                 yield return null;
             }
 
             yield return _waitBeforeLoadScene;
 
-            ActiveScene(SceneLoader.Instance._asyncLoadScene);
+            ActiveScene(_asyncLoadScene);
 
             yield return _waitBeforeLoadScene;
         }
