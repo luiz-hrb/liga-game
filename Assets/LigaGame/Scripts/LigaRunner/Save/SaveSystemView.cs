@@ -31,7 +31,7 @@ namespace LigaGame.Save
         }
     }
 
-
+#if UNITY_EDITOR
     [CustomEditor(typeof(SaveSystemView))]
     public class ObjectBuilderEditor : Editor
     {
@@ -52,4 +52,5 @@ namespace LigaGame.Save
             }
         }
     }
+#endif
 }
