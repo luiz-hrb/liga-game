@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/LigaGame/Settings/Player Actions.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/LigaGame/Settings/Input/Player Actions.inputactions'
 
 using System;
 using System.Collections;

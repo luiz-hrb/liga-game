@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/LigaGame/_Scenes/_Menu.unity
     guid: 3cde9964d6213a244a9107c6fa796042
@@ -19,8 +16,8 @@ EditorBuildSettings:
     guid: 93cf6be35fa1a57469868fc7d3ff4e99
   - enabled: 1
     path: Assets/LigaGame/_Scenes/Level02.unity
-    guid: 48d1e2c5a318a6d49b80cbb118266813
+    guid: 37c1efe4e1a6ad04c9467d60e3446286
   - enabled: 1
     path: Assets/LigaGame/_Scenes/Level03.unity
-    guid: 24a8a93b055e2ac4f80bad834457c910
+    guid: c0ac4a074bb60354e93b6a2c1d3923b9
   m_configObjects: {}
