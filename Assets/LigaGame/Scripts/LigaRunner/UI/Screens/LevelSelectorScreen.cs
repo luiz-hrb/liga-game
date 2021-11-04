@@ -28,10 +28,10 @@ namespace LigaGame.UI.Screens
 
         private void Start()
         {
-            CreateButtons();
+            CreateLoadMenu();
         }
 
-        private void CreateButtons()
+        private void CreateLoadMenu()
         {
             ClearButtons();
             var levelsProgressData = SaveSystem.PlayerData.LevelsProgressData;
@@ -54,6 +54,7 @@ namespace LigaGame.UI.Screens
                 {
                     { "Level", levelData.Name }
                 });
+                
                 SceneLoader.Instance.LoadLevelAsync(levelData.Scene);
             });
             return button;

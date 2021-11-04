@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     public sealed class PowerUpTarget : MonoBehaviour
     {

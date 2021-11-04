@@ -12,9 +12,7 @@ namespace LigaGame.Health
         public float CurrentHealth => _currentHealth;
         public bool IsAlive => _currentHealth > 0f;
 
-        public UnityEvent OnHealthChanged;
-        public UnityEvent OnDamage;
-        public UnityEvent OnHeal;
+        public UnityEvent<float> OnHealthChanged;
         public UnityEvent OnDeath;
 
         private void Awake()
@@ -22,23 +20,14 @@ namespace LigaGame.Health
             _currentHealth = _maxHealth;
         }
 
-        public void Damage(float damage)
+        public void ChangeHealth(float change)
         {
-            SetHealth(_currentHealth - damage);
-            OnHealthChanged.Invoke();
-            OnDamage.Invoke();
-        }
-
-        public void Heal(float heal)
-        {
-            SetHealth(_currentHealth + heal);
-            OnHealthChanged.Invoke();
-            OnHeal.Invoke();
+            SetHealth(_currentHealth + change);
+            OnHealthChanged.Invoke(change);
         }
 
         private void SetHealth(float health)
         {
-            bool isDamage = health < _currentHealth;
             _currentHealth = Mathf.Clamp(health, 0f, _maxHealth);
 
             if (!IsAlive)

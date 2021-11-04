@@ -1,7 +1,7 @@
 using LigaGame.Health;
 using UnityEngine;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     public sealed class PowerUpHealth : PowerUpBehaviour
     {
@@ -18,7 +18,7 @@ namespace LigaGame.PowerUp
             
             if (health != null)
             {
-                health.Heal(_increase);
+                health.ChangeHealth(_increase);
             }
         }
     }

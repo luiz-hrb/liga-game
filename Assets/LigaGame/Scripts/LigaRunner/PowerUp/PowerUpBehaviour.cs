@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     public class PowerUpBehaviour : MonoBehaviour
     {

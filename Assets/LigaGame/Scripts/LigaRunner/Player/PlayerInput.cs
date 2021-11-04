@@ -13,7 +13,7 @@ namespace LigaGame.Player
 
         private void Awake()
         {
-            _playerController = GetComponent<PlayerController>();
+            _playerController = GetComponent<IPlayerController>();
             _playerActions = new PlayerActions();
         }
 

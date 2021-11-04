@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LigaGame.PowerUp
+namespace LigaGame.PowerUps
 {
     [RequireComponent(typeof(Animator))]
     public sealed class PowerUp : MonoBehaviour

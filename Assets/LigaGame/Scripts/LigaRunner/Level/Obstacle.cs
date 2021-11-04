@@ -13,7 +13,7 @@ namespace LigaGame.Level
 
             if (health != null)
             {
-                health.Damage(_damage);
+                health.ChangeHealth(-_damage);
             }
         }
     }

@@ -34,7 +34,7 @@ namespace LigaGame.Level
         {
             if (Target != null)
             {
-                Target.Damage(Target.MaxHealth);
+                Target.ChangeHealth(-Target.MaxHealth);
             }
         }
     }

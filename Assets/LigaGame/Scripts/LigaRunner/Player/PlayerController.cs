@@ -52,8 +52,8 @@ namespace LigaGame.Player
             _rigidbody = GetComponent<Rigidbody2D>();
             _healthBehaviour = GetComponent<HealthBehaviour>();
 
-            _healthBehaviour.OnDamage.AddListener(() => Damaged());
-            _healthBehaviour.OnDeath.AddListener(() => Died());
+            _healthBehaviour.OnHealthChanged.AddListener(HealthChanged);
+            _healthBehaviour.OnDeath.AddListener(Died);
         }
 
         private void FixedUpdate()
@@ -74,6 +74,15 @@ namespace LigaGame.Player
             Vector2 velocity = _rigidbody.velocity;
             velocity.x = _targetVelocityX;
             _rigidbody.velocity = velocity;
+        }
+
+        public void Move(float direction)
+        {
+            if (!CanInteract)
+                return;
+
+            _targetVelocityX = direction * _speed;
+            _playerView.Move(direction);
         }
 
         public void Jump()
@@ -104,15 +113,6 @@ namespace LigaGame.Player
             _rigidbody.velocity = velocity;
         }
 
-        public void Move(float direction)
-        {
-            if (!CanInteract)
-                return;
-
-            _targetVelocityX = direction * _speed;
-            _playerView.Move(direction);
-        }
-
         private bool IsGrounded()
         {
             Vector2 origin = _collider.bounds.center;
@@ -126,12 +126,15 @@ namespace LigaGame.Player
             return isGrounded;
         }
 
-        public void Damaged()
+        public void HealthChanged(float healthChange)
         {
             if (!_isAlive)
                 return;
                 
-            _playerView.Damaged();
+            if (healthChange < 0)
+            {
+                _playerView.Damaged();
+            }
         }
 
         public void Died()

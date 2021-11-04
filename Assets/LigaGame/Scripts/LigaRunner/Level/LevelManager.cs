@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
@@ -5,10 +6,10 @@ using LigaGame.Player;
 using LigaGame.UI;
 using LigaGame.UI.Score;
 using LigaGame.UI.Screens;
-using Cinemachine;
 using LigaGame.Model;
 using LigaGame.ScriptableObjects;
 using LigaGame.LoadScene;
+using LigaGame.PowerUps;
 
 namespace LigaGame.Level
 {
@@ -19,7 +20,7 @@ namespace LigaGame.Level
         [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
         [SerializeField] private Timer _timer;
         [SerializeField] private Checkpoint _lastCheckpoint;
-        [SerializeField] private PowerUp.PowerUp[] _starsToCollect;
+        [SerializeField] private PowerUp[] _starsToCollect;
         [SerializeField] private ScoreView _scoreStars;
         [SerializeField] private Healthbar _healthbar;
         [SerializeField] private LevelsData _levelsData;
@@ -50,7 +51,7 @@ namespace LigaGame.Level
             _player.OnDeath.AddListener(() => OnPlayerDie());
             _lastCheckpoint.OnCheckpointReached.AddListener(() => OnFinishLevel());
 
-            foreach (PowerUp.PowerUp star in _starsToCollect)
+            foreach (PowerUps.PowerUp star in _starsToCollect)
             {
                 star.OnTake.AddListener(() => OnStarCollected());
             }

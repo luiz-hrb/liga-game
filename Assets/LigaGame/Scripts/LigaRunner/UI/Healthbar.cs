@@ -55,7 +55,7 @@ namespace LigaGame.UI
         {
             _healthBehaviour?.OnHealthChanged.AddListener(OnHealthChanged);
             _currentViewRatio = HealthRatio;
-            OnHealthChanged();
+            OnHealthChanged(0f);
         }
 
         private void Unsubscribe()
@@ -63,7 +63,7 @@ namespace LigaGame.UI
             _healthBehaviour?.OnHealthChanged.RemoveListener(OnHealthChanged);
         }
 
-        private void OnHealthChanged()
+        private void OnHealthChanged(float healthChanged)
         {
             _targetRatio = HealthRatio;
         }
