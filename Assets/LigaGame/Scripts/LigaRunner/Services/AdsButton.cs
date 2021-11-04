@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -8,18 +6,17 @@ using UnityEngine.Analytics;
 
 namespace LigaGame.Services
 {
-    public class AdsManager : MonoBehaviour
+    [RequireComponent(typeof(Button))]
+    public class AdsButton : MonoBehaviour
     {
-        [SerializeField] private Button _showAdButton;
-        private string _adUnitId = "Interstitial_Android";
-
-        private const string _gameId = "4434469"; 
+        [SerializeField] private string _adUnitId = "Interstitial_Android";
+        private Button _showAdButton;
 
         public UnityEvent OnAdsFinished;
 
-        private void Start()
+        private void Awake()
         {
-            Advertisement.Initialize(_gameId);
+            _showAdButton = GetComponent<Button>();
             _showAdButton.onClick.AddListener(ShowAd);
         }
 
@@ -27,8 +24,10 @@ namespace LigaGame.Services
         {
             if (Advertisement.IsReady(_adUnitId))
             {
-                Analytics.CustomEvent("Viwed Ads");
                 Advertisement.Show(_adUnitId);
+                OnAdsFinished.Invoke();
+
+                Analytics.CustomEvent("Viwed Ads");
             }
         }
     }
