@@ -15,8 +15,7 @@ namespace LigaGame.Level
     {
         [SerializeField] private ScenesIndex _sceneIndex;
         [SerializeField] private LevelManagerView _levelManagerView;
-        [SerializeField] private PlayerSpawer _playerSpawer;
-        [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
+        [SerializeField] private Spawner _playerSpawer;
         [SerializeField] private Checkpoint _onCompleteLevelCheckpoint;
         [SerializeField] private PowerUp[] _pointsToCollect;
         [SerializeField] private LevelsData _levelsData;
@@ -28,8 +27,7 @@ namespace LigaGame.Level
         private void Awake()
         {
             _levelModel = _levelsData.GetLevelData(_sceneIndex);
-            _player = _playerSpawer.SpawnPlayer();
-            _cinemachineCamera.Follow = _player.transform;
+            _player = _playerSpawer.Spawn().GetComponent<PlayerController>();
 
             _levelManagerView.Initialize(this, _player, _levelModel.quantityPoints);
             

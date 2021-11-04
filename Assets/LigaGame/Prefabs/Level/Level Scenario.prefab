@@ -53,7 +53,6 @@ MonoBehaviour:
   _sceneIndex: 2
   _levelManagerView: {fileID: 0}
   _playerSpawer: {fileID: 7576787004932899442}
-  _cinemachineCamera: {fileID: 0}
   _onCompleteLevelCheckpoint: {fileID: 7576787004941771479}
   _pointsToCollect:
   - {fileID: 7863448743372933633}
@@ -1448,6 +1447,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3629991983717911494, guid: a2846ea3ad1880842ae4b95d471178d1,
+        type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 1037346184786672860, guid: f73c2b1639bfa964bbdcf2be93da11ea,
+        type: 3}
     - target: {fileID: 3629991983717911495, guid: a2846ea3ad1880842ae4b95d471178d1,
         type: 3}
       propertyPath: m_RootOrder
