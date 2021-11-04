@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace LigaGame.UI.Screens
 {
-    public class MenuCanvasManager : ScreenBase
+    public class MenuManagerView : ScreenBase
     {
         public enum ScreenType
         {

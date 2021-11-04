@@ -9,7 +9,7 @@ using TMPro;
 
 namespace LigaGame.UI.Screens
 {
-    public class OnWinScreen : ScreenBase
+    public class LevelCompletedScreen : ScreenBase
     {
         [SerializeField] private TextMeshProUGUI _timeText;
         [SerializeField] private ScoreView _scoreStars;

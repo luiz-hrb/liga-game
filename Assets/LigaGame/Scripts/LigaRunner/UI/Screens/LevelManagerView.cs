@@ -5,11 +5,11 @@ using LigaGame.UI.Score;
 
 namespace LigaGame.UI.Screens
 {
-    public class LevelCanvasManager : ScreenBase
+    public class LevelManagerView : ScreenBase
     {
         public enum ScreenType
         {
-            Win = 0,
+            LevelCompleted = 0,
             GameOver = 1,
         }
 
@@ -23,6 +23,9 @@ namespace LigaGame.UI.Screens
             get => _levelManager;
             set => _levelManager = value;
         }
+        public Timer Timer => _timer;
+        public ScoreView ScoreStars => _scoreStars;
+        public Healthbar Healthbar => _healthbar;
 
         public void Initialize()
         {
