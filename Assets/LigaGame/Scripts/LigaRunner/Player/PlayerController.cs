@@ -6,7 +6,7 @@ namespace LigaGame.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(HealthBehaviour))]
-    public class PlayerController : MonoBehaviour, IPlayerController
+    public class PlayerController : MonoBehaviour, IPlayer
     {
         [SerializeField] private float _speed = 6.0f;
         [SerializeField] private float _jumpForce = 8.0f;
@@ -131,11 +131,8 @@ namespace LigaGame.Player
         {
             if (!_isAlive)
                 return;
-                
-            if (healthChange < 0)
-            {
-                _playerView.Damaged();
-            }
+
+            _playerView.HealthChanged(healthChange);
         }
 
         public void Died()

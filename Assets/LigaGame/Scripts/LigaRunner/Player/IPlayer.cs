@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LigaGame.Player
 {
-    public interface IPlayerController
+    public interface IPlayer
     {
         void Jump();
         void Move(float direction);

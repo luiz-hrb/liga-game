@@ -9,11 +9,11 @@ namespace LigaGame.Player
         private PlayerActions _playerActions;
         private InputAction  _movementAction;
         private InputAction _jumpAction;
-        private IPlayerController _playerController;
+        private IPlayer _playerController;
 
         private void Awake()
         {
-            _playerController = GetComponent<IPlayerController>();
+            _playerController = GetComponent<IPlayer>();
             _playerActions = new PlayerActions();
         }
 

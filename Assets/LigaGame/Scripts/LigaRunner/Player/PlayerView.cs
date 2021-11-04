@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace LigaGame.Player
 {
-    public class PlayerView : MonoBehaviour
+    public class PlayerView : MonoBehaviour, IPlayer
     {
         [SerializeField] Animator _animator;
         [SerializeField] private Transform _spriteTransform;
@@ -24,9 +24,12 @@ namespace LigaGame.Player
             _animator.SetTrigger("Jump");
         }
 
-        public void Damaged()
+        public void HealthChanged(float healthChange)
         {
-            _animator.SetTrigger("Damaged");
+            if (healthChange < 0f)
+            {
+                _animator.SetTrigger("Damaged");
+            }
         }
 
         public void Died()
