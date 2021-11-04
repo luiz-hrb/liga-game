@@ -2,6 +2,7 @@ namespace LigaGame.LoadScene
 {
     public enum ScenesIndex
     {
+        None = -1,
         MENU = 0,
         ASYNC_LOAD = 1,
         LEVEL_01 = 2,

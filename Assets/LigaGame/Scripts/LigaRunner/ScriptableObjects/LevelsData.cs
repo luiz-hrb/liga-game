@@ -22,5 +22,32 @@ namespace LigaGame.ScriptableObjects
             }
             return null;
         }
+
+        public LevelModel GetNextLevel(LevelModel currentLevel)
+        {
+            int currentLevelIndex = GetLevelIndex(currentLevel);
+
+            if (currentLevelIndex == -1)
+            {
+                return null;
+            }
+            if (currentLevelIndex == _levels.Length - 1)
+            {
+                return null;
+            }
+            return _levels[currentLevelIndex + 1];
+        }
+
+        private int GetLevelIndex(LevelModel level)
+        {
+            for (int i = 0; i < _levels.Length; i++)
+            {
+                if (_levels[i].Scene == level.Scene)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

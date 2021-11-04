@@ -28,17 +28,17 @@ namespace LigaGame.Level
         [SerializeField] private LevelCanvasManager _levelCanvasManager;
 
         private PlayerController _player;
-        private LevelModel _levelData;
+        private LevelModel _levelModel;
         private bool _playerWon;
 
         private void Awake()
         {
             _player = _playerSpawer.SpawnPlayer();
             _healthbar.SetHealthBehaviour(_player.HealthBehaviour);
-            _levelData = _levelsData.GetLevelData(_sceneIndex);
+            _levelModel = _levelsData.GetLevelData(_sceneIndex);
             _cinemachineCamera.Follow = _player.transform;
 
-            _scoreStars.SetScoreItensQuantity(_levelData.QuantityStars);
+            _scoreStars.SetScoreItensQuantity(_levelModel.QuantityStars);
             _scoreStars.SetPoints(0);
             _levelCanvasManager.LevelManager = this;
             
@@ -67,7 +67,7 @@ namespace LigaGame.Level
 
             Analytics.CustomEvent("PlayerDie", new Dictionary<string, object>
             {
-                { "Level", _levelData.Name },
+                { "Level", _levelModel.Name },
                 { "Stars", _scoreStars.Points }
             });
         }
@@ -82,25 +82,26 @@ namespace LigaGame.Level
 
             Analytics.CustomEvent("PlayerWin", new Dictionary<string, object>
             {
-                { "Level", _levelData.Name },
+                { "Level", _levelModel.Name },
                 { "Stars", _scoreStars.Points }
             });
         }
 
         private void SubmitScore()
         {
-            (int score, int maxScore, float time) scoreData = (_scoreStars.Points, _levelData.QuantityStars, _timer.ElapsedTime);
+            (int score, int maxScore, float time, LevelModel levelModel) scoreData = (_scoreStars.Points, _levelModel.QuantityStars, _timer.ElapsedTime, _levelModel);
             _levelCanvasManager.OpenScreen((int)LevelCanvasManager.ScreenType.Win, scoreData);
-            ScoreManager.Submit(scoreData.score, scoreData.time, _levelData);
+            ScoreManager.Submit(scoreData.score, scoreData.time, _levelModel);
         }
 
         private void OnStarCollected()
         {
+            _scoreStars.SetPoints(_scoreStars.Points + 1);
+            
             Analytics.CustomEvent("CollectedStar", new Dictionary<string, object>
             {
-                { "Level", _levelData.Name },
+                { "Level", _levelModel.Name },
             });
-            _scoreStars.SetPoints(_scoreStars.Points + 1);
         }
     }
 }
