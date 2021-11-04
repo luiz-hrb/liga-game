@@ -57,7 +57,7 @@ namespace LigaGame.Level
             Analytics.CustomEvent("PlayerDie", new Dictionary<string, object>
             {
                 { "Level", _levelModel.name },
-                { "Stars", _levelManagerView.ScoreStars.Points }
+                { "Stars", _levelManagerView.ScorePoints.Points }
             });
         }
 
@@ -71,25 +71,25 @@ namespace LigaGame.Level
             Analytics.CustomEvent("PlayerWin", new Dictionary<string, object>
             {
                 { "Level", _levelModel.name },
-                { "Stars", _levelManagerView.ScoreStars.Points }
+                { "Stars", _levelManagerView.ScorePoints.Points }
             });
         }
 
         private void SubmitScore()
         {
             ScoreModel scoreModel = new ScoreModel
-                (_levelManagerView.ScoreStars.Points,
+                (_levelManagerView.ScorePoints.Points,
                 _levelModel.quantityPoints,
                 _levelManagerView.Timer.ElapsedTime,
                 _levelModel);
             
             _levelManagerView.OpenScreen((int)LevelManagerView.ScreenType.LevelCompleted, scoreModel);
-            ScoreManager.Submit(scoreModel.score, scoreModel.time, _levelModel);
+            ScoreManager.Submit(scoreModel, _levelModel);
         }
 
         private void OnPointCollected()
         {
-           _levelManagerView.ScoreStars.SetPoints(_levelManagerView.ScoreStars.Points + 1);
+           _levelManagerView.ScorePoints.SetPoints(_levelManagerView.ScorePoints.Points + 1);
             
             Analytics.CustomEvent("CollectedStar", new Dictionary<string, object>
             {

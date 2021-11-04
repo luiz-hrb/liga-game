@@ -6,7 +6,7 @@ namespace LigaGame.Model
     [System.Serializable]
     public class ScoreModel
     {
-        public int score;
+        public int points;
         public int maxScore;
         public float time;
         public LevelModel levelModel;
@@ -17,7 +17,7 @@ namespace LigaGame.Model
 
         public ScoreModel(int score, int maxScore, float time, LevelModel levelModel)
         {
-            this.score = score;
+            this.points = score;
             this.maxScore = maxScore;
             this.time = time;
             this.levelModel = levelModel;

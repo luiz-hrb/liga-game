@@ -55,7 +55,7 @@ namespace LigaGame.UI.Screens
                 
                 _timeText.text = scoreModel.time.FromSecondsToTime();
                 _scoreStars.SetScoreItensQuantity(scoreModel.maxScore);
-                _scoreStars.SetPoints(scoreModel.score);
+                _scoreStars.SetPoints(scoreModel.points);
                 _levelModel = scoreModel.levelModel;
 
                 _nextScene = GetNextScene();

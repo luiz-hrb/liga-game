@@ -28,11 +28,11 @@ namespace LigaGame.Model
             this.scene = scene;
         }
         
-        public void SetScore(int points, float gameplayTime)
+        public void SetScore(ScoreModel scoreModel)
         {
             completed = true;
-            this.points = points;
-            this.gameplayTime = gameplayTime;
+            points = scoreModel.points;
+            gameplayTime = scoreModel.time;
         }
     }
 }

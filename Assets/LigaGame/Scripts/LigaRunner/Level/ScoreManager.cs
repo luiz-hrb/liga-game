@@ -5,18 +5,22 @@ namespace LigaGame.Level
 {
     public static class ScoreManager
     {
-        public static void Submit(int points, float time, LevelModel levelData)
+        public static void Submit(ScoreModel scoreModel, LevelModel levelData)
         {
             LevelProgressModel levelProgressData = SaveSystem.PlayerData.GetLevelProgressModel(levelData.scene);
 
-            if (!levelProgressData.completed
-                || levelProgressData.points < points
-                || levelProgressData.points == points && levelProgressData.gameplayTime > time
-            )
+            if (IsBestScore(scoreModel, levelProgressData))
             {
-                levelProgressData.SetScore(points, time);
+                levelProgressData.SetScore(scoreModel);
                 SaveSystem.SavePlayer();
             }
+        }
+
+        private static bool IsBestScore(ScoreModel scoreModel, LevelProgressModel levelProgressData)
+        {
+            return !levelProgressData.completed
+                || levelProgressData.points < scoreModel.points
+                || levelProgressData.points == scoreModel.points && levelProgressData.gameplayTime > scoreModel.time;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace LigaGame.UI.Screens
         }
 
         [SerializeField] private Timer _timer;
-        [SerializeField] private ScoreView _scoreStars;
+        [SerializeField] private ScoreView _scorePoints;
         [SerializeField] private Healthbar _healthbar;
         private LevelManager _levelManager;
 
@@ -24,7 +24,7 @@ namespace LigaGame.UI.Screens
             set => _levelManager = value;
         }
         public Timer Timer => _timer;
-        public ScoreView ScoreStars => _scoreStars;
+        public ScoreView ScorePoints => _scorePoints;
         public Healthbar Healthbar => _healthbar;
 
         public void Initialize(LevelManager levelManager, PlayerController player, int quantityPoints)
@@ -32,8 +32,9 @@ namespace LigaGame.UI.Screens
             _levelManager = levelManager;
             Timer.StartCount();
             Healthbar.SetHealthBehaviour(player.HealthBehaviour);
-            ScoreStars.SetScoreItensQuantity(quantityPoints);
-            ScoreStars.SetPoints(0);
+            Debug.Log($"points {quantityPoints}");
+            ScorePoints.SetScoreItensQuantity(quantityPoints);
+            ScorePoints.SetPoints(0);
         }
 
         public override void OpenScreen(int screenToOpenId, object args)
