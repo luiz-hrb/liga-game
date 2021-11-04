@@ -51,12 +51,12 @@ namespace LigaGame.UI.Screens
 
             if (args != null)
             {
-                (int score, int maxScore, float time, LevelModel levelModel) screenArgs = ((int, int, float, LevelModel)) args;
+                ScoreModel scoreModel = (ScoreModel) args;
                 
-                _timeText.text = screenArgs.time.FromSecondsToTime();
-                _scoreStars.SetScoreItensQuantity(screenArgs.maxScore);
-                _scoreStars.SetPoints(screenArgs.score);
-                _levelModel = screenArgs.levelModel;
+                _timeText.text = scoreModel.time.FromSecondsToTime();
+                _scoreStars.SetScoreItensQuantity(scoreModel.maxScore);
+                _scoreStars.SetPoints(scoreModel.score);
+                _levelModel = scoreModel.levelModel;
 
                 _nextScene = GetNextScene();
                 bool hasNextLevel = _nextScene != ScenesIndex.None;
@@ -75,7 +75,7 @@ namespace LigaGame.UI.Screens
 
             if (nextLevel != null)
             {
-                return nextLevel.Scene;
+                return nextLevel.scene;
             }
             else
             {

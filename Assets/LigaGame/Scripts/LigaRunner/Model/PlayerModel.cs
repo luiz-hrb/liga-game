@@ -7,7 +7,7 @@ namespace LigaGame.Model
     [System.Serializable]
     public class PlayerModel
     {
-        public LevelProgressModel[] LevelsProgressData;
+        public LevelProgressModel[] levelsProgressData;
             
         public void CheckLevelsData(LevelModel[] levelsData)
         {
@@ -17,13 +17,13 @@ namespace LigaGame.Model
 
         private void CheckLevelsProgressNull(LevelModel[] levelsData)
         {
-            if (LevelsProgressData == null)
+            if (levelsProgressData == null)
             {
-                LevelsProgressData = new LevelProgressModel[levelsData.Length];
+                levelsProgressData = new LevelProgressModel[levelsData.Length];
 
-                for (int i = 0; i < LevelsProgressData.Length; i++)
+                for (int i = 0; i < levelsProgressData.Length; i++)
                 {
-                    LevelsProgressData[i] = new LevelProgressModel(levelsData[i].Scene);
+                    levelsProgressData[i] = new LevelProgressModel(levelsData[i].scene);
                 }
 
                 SaveSystem.SavePlayer();
@@ -32,24 +32,24 @@ namespace LigaGame.Model
 
         private void CheckLevelsQuantity(LevelModel[] levelsData)
         {
-            if (LevelsProgressData.Length != levelsData.Length)
+            if (levelsProgressData.Length != levelsData.Length)
             {
                 LevelProgressModel[] newLevelsProgressData = new LevelProgressModel[levelsData.Length];
                 
                 for (int levelId = 0; levelId < newLevelsProgressData.Length; levelId++)
                 {
-                    bool isNewLevel = levelId >= LevelsProgressData.Length;
+                    bool isNewLevel = levelId >= levelsProgressData.Length;
 
                     if (!isNewLevel)
                     {
-                        newLevelsProgressData[levelId] = LevelsProgressData[levelId];
+                        newLevelsProgressData[levelId] = levelsProgressData[levelId];
                     }
                     else
                     {
-                        newLevelsProgressData[levelId] = new LevelProgressModel(levelsData[levelId].Scene);
+                        newLevelsProgressData[levelId] = new LevelProgressModel(levelsData[levelId].scene);
                     }
                 }
-                LevelsProgressData = newLevelsProgressData;
+                levelsProgressData = newLevelsProgressData;
 
                 SaveSystem.SavePlayer();
             }
@@ -57,9 +57,9 @@ namespace LigaGame.Model
 
         public LevelProgressModel GetLevelProgressModel(ScenesIndex scene)
         {
-            foreach (LevelProgressModel levelProgress in LevelsProgressData)
+            foreach (LevelProgressModel levelProgress in levelsProgressData)
             {
-                if (levelProgress.Scene == scene)
+                if (levelProgress.scene == scene)
                 {
                     return levelProgress;
                 }
@@ -69,11 +69,11 @@ namespace LigaGame.Model
 
         public void SetLevelProgressModel(ScenesIndex scene, LevelProgressModel newLevelProgress)
         {
-            for (int i = 0; i < LevelsProgressData.Length; i++)
+            for (int i = 0; i < levelsProgressData.Length; i++)
             {
-                if (LevelsProgressData[i].Scene == scene)
+                if (levelsProgressData[i].scene == scene)
                 {
-                    LevelsProgressData[i] = newLevelProgress;
+                    levelsProgressData[i] = newLevelProgress;
                     break;
                 }
             }

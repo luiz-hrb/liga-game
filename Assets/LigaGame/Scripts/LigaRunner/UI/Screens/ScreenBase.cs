@@ -28,12 +28,12 @@ namespace LigaGame.UI.Screens
             }
         }
 
-        public void OpenScreen(int screenId)
+        public virtual void OpenScreen(int screenId)
         {
             OpenScreen(screenId, null);
         }
 
-        public void OpenScreen(int screenToOpenId, object args)
+        public virtual void OpenScreen(int screenToOpenId, object args)
         {
             _currentScreenId = screenToOpenId;
             ScreenBase screenToOpen = null;

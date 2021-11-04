@@ -51,15 +51,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneIndex: 2
+  _levelManagerView: {fileID: 0}
   _playerSpawer: {fileID: 7576787004932899442}
   _cinemachineCamera: {fileID: 0}
   _onCompleteLevelCheckpoint: {fileID: 7576787004941771479}
-  _starsToCollect:
+  _pointsToCollect:
   - {fileID: 7863448743372933633}
   - {fileID: 470900638297286904}
   - {fileID: 654463521165744226}
   _levelsData: {fileID: 11400000, guid: 19e93913bb39b8a409dc53280773db03, type: 2}
-  _levelCanvasManager: {fileID: 0}
 --- !u!1 &7576787004848712382
 GameObject:
   m_ObjectHideFlags: 0

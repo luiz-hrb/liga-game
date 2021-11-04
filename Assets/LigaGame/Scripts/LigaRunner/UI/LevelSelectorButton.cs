@@ -21,9 +21,9 @@ namespace LigaGame.UI
 
         public void Initialize(LevelModel levelData, LevelProgressModel levelProgressData, Action onClickAction = null)
         {
-            _nameText.text = levelData.Name;
-            _iconImage.sprite = levelData.Icon;
-            _scoreMarks.SetScoreItensQuantity(levelData.QuantityStars);
+            _nameText.text = levelData.name;
+            _iconImage.sprite = levelData.icon;
+            _scoreMarks.SetScoreItensQuantity(levelData.quantityPoints);
             MarkProgress(levelProgressData);
 
             if (onClickAction != null)
@@ -34,10 +34,10 @@ namespace LigaGame.UI
 
         public void MarkProgress(LevelProgressModel levelProgressData)
         {
-            if (levelProgressData.Completed)
+            if (levelProgressData.completed)
             {
-                _scoreMarks.SetPoints(levelProgressData.Points);
-                _timeText.text = levelProgressData.GameplayTime.FromSecondsToTime();
+                _scoreMarks.SetPoints(levelProgressData.points);
+                _timeText.text = levelProgressData.gameplayTime.FromSecondsToTime();
             }
             else
             {

@@ -5,10 +5,10 @@ namespace LigaGame.Model
     [System.Serializable]
     public class LevelProgressModel
     {
-        public bool Completed;
-        public int Points;
-        public float GameplayTime;
-        public ScenesIndex Scene;
+        public bool completed;
+        public int points;
+        public float gameplayTime;
+        public ScenesIndex scene;
 
         public LevelProgressModel()
         {
@@ -17,22 +17,22 @@ namespace LigaGame.Model
         
         public LevelProgressModel(int points, float gameplayTime, ScenesIndex scene)
         {
-            Completed = true;
-            Points = points;
-            GameplayTime = gameplayTime;
-            Scene = scene;
+            completed = true;
+            this.points = points;
+            this.gameplayTime = gameplayTime;
+            this.scene = scene;
         }
         
         public LevelProgressModel(ScenesIndex scene)
         {
-            Scene = scene;
+            this.scene = scene;
         }
         
         public void SetScore(int points, float gameplayTime)
         {
-            Completed = true;
-            Points = points;
-            GameplayTime = gameplayTime;
+            completed = true;
+            this.points = points;
+            this.gameplayTime = gameplayTime;
         }
     }
 }

@@ -1283,6 +1283,11 @@ PrefabInstance:
       objectReference: {fileID: 1803663383}
     - target: {fileID: 7576787004233517353, guid: 4a14d0737688ec141b00404e5962f633,
         type: 3}
+      propertyPath: _levelManagerView
+      value: 
+      objectReference: {fileID: 632770950}
+    - target: {fileID: 7576787004233517353, guid: 4a14d0737688ec141b00404e5962f633,
+        type: 3}
       propertyPath: _cinemachineCamera
       value: 
       objectReference: {fileID: 933408027}

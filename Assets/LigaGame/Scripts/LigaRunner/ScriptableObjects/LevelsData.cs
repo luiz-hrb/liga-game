@@ -15,7 +15,7 @@ namespace LigaGame.ScriptableObjects
         {
             foreach (LevelModel level in _levels)
             {
-                if (level.Scene == scene)
+                if (level.scene == scene)
                 {
                     return level;
                 }
@@ -42,7 +42,7 @@ namespace LigaGame.ScriptableObjects
         {
             for (int i = 0; i < _levels.Length; i++)
             {
-                if (_levels[i].Scene == level.Scene)
+                if (_levels[i].scene == level.scene)
                 {
                     return i;
                 }

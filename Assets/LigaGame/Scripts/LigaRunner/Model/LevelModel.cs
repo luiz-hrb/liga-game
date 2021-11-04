@@ -6,9 +6,9 @@ namespace LigaGame.Model
     [System.Serializable]
     public class LevelModel
     {
-        public string Name;
-        public ScenesIndex Scene;
-        public Sprite Icon;
-        public int QuantityStars = 3;
+        public string name;
+        public ScenesIndex scene;
+        public Sprite icon;
+        public int quantityPoints = 3;
     }
 }

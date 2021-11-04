@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 using LigaGame.Player;
-using LigaGame.UI;
-using LigaGame.UI.Score;
 using LigaGame.UI.Screens;
 using LigaGame.Model;
 using LigaGame.ScriptableObjects;
@@ -16,13 +14,12 @@ namespace LigaGame.Level
     public class LevelManager : MonoBehaviour
     {
         [SerializeField] private ScenesIndex _sceneIndex;
+        [SerializeField] private LevelManagerView _levelManagerView;
         [SerializeField] private PlayerSpawer _playerSpawer;
         [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
         [SerializeField] private Checkpoint _onCompleteLevelCheckpoint;
-        [SerializeField] private PowerUp[] _starsToCollect;
+        [SerializeField] private PowerUp[] _pointsToCollect;
         [SerializeField] private LevelsData _levelsData;
-
-        [SerializeField] private LevelManagerView _levelCanvasManager;
 
         private PlayerController _player;
         private LevelModel _levelModel;
@@ -30,16 +27,12 @@ namespace LigaGame.Level
 
         private void Awake()
         {
-            _player = _playerSpawer.SpawnPlayer();
-            _levelCanvasManager.Healthbar.SetHealthBehaviour(_player.HealthBehaviour);
             _levelModel = _levelsData.GetLevelData(_sceneIndex);
+            _player = _playerSpawer.SpawnPlayer();
             _cinemachineCamera.Follow = _player.transform;
 
-            _levelCanvasManager.ScoreStars.SetScoreItensQuantity(_levelModel.QuantityStars);
-            _levelCanvasManager.ScoreStars.SetPoints(0);
-            _levelCanvasManager.LevelManager = this;
+            _levelManagerView.Initialize(this, _player, _levelModel.quantityPoints);
             
-            _levelCanvasManager.Timer.StartCount();
             AssignEvents();
         }
 
@@ -48,9 +41,9 @@ namespace LigaGame.Level
             _player.OnDeath.AddListener(() => OnPlayerDie());
             _onCompleteLevelCheckpoint.OnCheckpointReached.AddListener(() => OnFinishLevel());
 
-            foreach (PowerUps.PowerUp star in _starsToCollect)
+            foreach (PowerUps.PowerUp point in _pointsToCollect)
             {
-                star.OnTake.AddListener(() => OnStarCollected());
+                point.OnTake.AddListener(() => OnPointCollected());
             }
         }
 
@@ -59,19 +52,17 @@ namespace LigaGame.Level
             if (_playerWon)
                 return;
 
-            _levelCanvasManager.OpenScreen((int)LevelManagerView.ScreenType.GameOver);
-            _levelCanvasManager.Timer.PauseCount();
+            _levelManagerView.OpenScreen((int)LevelManagerView.ScreenType.GameOver);
 
             Analytics.CustomEvent("PlayerDie", new Dictionary<string, object>
             {
-                { "Level", _levelModel.Name },
-                { "Stars", _levelCanvasManager.ScoreStars.Points }
+                { "Level", _levelModel.name },
+                { "Stars", _levelManagerView.ScoreStars.Points }
             });
         }
 
         private void OnFinishLevel()
         {
-            _levelCanvasManager.Timer.PauseCount();
             _playerWon = true;
             _player.CanInteract = false;
             
@@ -79,30 +70,30 @@ namespace LigaGame.Level
 
             Analytics.CustomEvent("PlayerWin", new Dictionary<string, object>
             {
-                { "Level", _levelModel.Name },
-                { "Stars", _levelCanvasManager.ScoreStars.Points }
+                { "Level", _levelModel.name },
+                { "Stars", _levelManagerView.ScoreStars.Points }
             });
         }
 
         private void SubmitScore()
         {
-            (int score, int maxScore, float time, LevelModel levelModel) scoreData =
-                (_levelCanvasManager.ScoreStars.Points,
-                _levelModel.QuantityStars,
-                _levelCanvasManager.Timer.ElapsedTime,
+            ScoreModel scoreModel = new ScoreModel
+                (_levelManagerView.ScoreStars.Points,
+                _levelModel.quantityPoints,
+                _levelManagerView.Timer.ElapsedTime,
                 _levelModel);
             
-            _levelCanvasManager.OpenScreen((int)LevelManagerView.ScreenType.LevelCompleted, scoreData);
-            ScoreManager.Submit(scoreData.score, scoreData.time, _levelModel);
+            _levelManagerView.OpenScreen((int)LevelManagerView.ScreenType.LevelCompleted, scoreModel);
+            ScoreManager.Submit(scoreModel.score, scoreModel.time, _levelModel);
         }
 
-        private void OnStarCollected()
+        private void OnPointCollected()
         {
-           _levelCanvasManager.ScoreStars.SetPoints(_levelCanvasManager.ScoreStars.Points + 1);
+           _levelManagerView.ScoreStars.SetPoints(_levelManagerView.ScoreStars.Points + 1);
             
             Analytics.CustomEvent("CollectedStar", new Dictionary<string, object>
             {
-                { "Level", _levelModel.Name },
+                { "Level", _levelModel.name },
             });
         }
     }

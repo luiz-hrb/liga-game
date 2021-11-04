@@ -1,6 +1,6 @@
 using UnityEngine;
 using LigaGame.Level;
-using LigaGame.UI;
+using LigaGame.Player;
 using LigaGame.UI.Score;
 
 namespace LigaGame.UI.Screens
@@ -27,10 +27,20 @@ namespace LigaGame.UI.Screens
         public ScoreView ScoreStars => _scoreStars;
         public Healthbar Healthbar => _healthbar;
 
-        public void Initialize()
+        public void Initialize(LevelManager levelManager, PlayerController player, int quantityPoints)
         {
-            _timer.StartCount();
+            _levelManager = levelManager;
+            Timer.StartCount();
+            Healthbar.SetHealthBehaviour(player.HealthBehaviour);
+            ScoreStars.SetScoreItensQuantity(quantityPoints);
+            ScoreStars.SetPoints(0);
+        }
 
+        public override void OpenScreen(int screenToOpenId, object args)
+        {
+            base.OpenScreen(screenToOpenId, args);
+
+            Timer.PauseCount();
         }
     }
 }

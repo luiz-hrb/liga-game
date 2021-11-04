@@ -7,11 +7,11 @@ namespace LigaGame.Level
     {
         public static void Submit(int points, float time, LevelModel levelData)
         {
-            LevelProgressModel levelProgressData = SaveSystem.PlayerData.GetLevelProgressModel(levelData.Scene);
+            LevelProgressModel levelProgressData = SaveSystem.PlayerData.GetLevelProgressModel(levelData.scene);
 
-            if (!levelProgressData.Completed
-                || levelProgressData.Points < points
-                || levelProgressData.Points == points && levelProgressData.GameplayTime > time
+            if (!levelProgressData.completed
+                || levelProgressData.points < points
+                || levelProgressData.points == points && levelProgressData.gameplayTime > time
             )
             {
                 levelProgressData.SetScore(points, time);
