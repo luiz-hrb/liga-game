@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4751fe94b8def674f9fec3ae12861e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lerpAmount: 1
+  _lerpAmount: 3
   _player: {fileID: 1135059955}
   _startPosition: {fileID: 475443241}
   _endPosition: {fileID: 124408509}
