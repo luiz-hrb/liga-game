@@ -12,6 +12,7 @@ namespace LigaGame.LoadScene
         private const float _minimumLoadProgress = 0.9f;
         
         public static SceneLoader Instance { get; private set; }
+        public AsyncOperation AsyncLoadScene => _asyncLoadScene;
 
         private void Awake()
         {
