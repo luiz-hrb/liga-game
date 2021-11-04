@@ -9,11 +9,11 @@ namespace LigaGame.Level
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            HealthBehaviour health = other.collider.GetComponentInParent<HealthBehaviour>();
+            HealthBehaviour healthBehaviour = other.collider.GetComponentInParent<HealthBehaviour>();
 
-            if (health != null)
+            if (healthBehaviour != null)
             {
-                health.ChangeHealth(-_damage);
+                healthBehaviour.ChangeHealth(-_damage);
             }
         }
     }

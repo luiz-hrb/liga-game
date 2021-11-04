@@ -21,7 +21,7 @@ namespace LigaGame.Level
 
         private void CheckTargetYPosition()
         {
-            if (Target != null && Target.CurrentHealth > 0f)
+            if (Target != null && Target.IsAlive)
             {
                 if (Target.transform.position.y < _minYPosition)
                 {

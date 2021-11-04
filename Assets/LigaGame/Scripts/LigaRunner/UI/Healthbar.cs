@@ -28,12 +28,12 @@ namespace LigaGame.UI
 
         private void Awake()
         {
-            Subscribe();
+            SubscribeToHealthbehaviour();
         }
 
         private void OnDestroy()
         {
-            Unsubscribe();
+            UnsubscribeToHealthbehaviour();
         }
 
         private void Update()
@@ -46,19 +46,19 @@ namespace LigaGame.UI
 
         public void SetHealthBehaviour(HealthBehaviour healthBehaviour)
         {
-            Unsubscribe();
+            UnsubscribeToHealthbehaviour();
             _healthBehaviour = healthBehaviour;
-            Subscribe();
+            SubscribeToHealthbehaviour();
         }
 
-        private void Subscribe()
+        private void SubscribeToHealthbehaviour()
         {
             _healthBehaviour?.OnHealthChanged.AddListener(OnHealthChanged);
             _currentViewRatio = HealthRatio;
             OnHealthChanged(0f);
         }
 
-        private void Unsubscribe()
+        private void UnsubscribeToHealthbehaviour()
         {
             _healthBehaviour?.OnHealthChanged.RemoveListener(OnHealthChanged);
         }

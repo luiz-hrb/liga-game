@@ -5,5 +5,10 @@ namespace LigaGame.UI.Score
         void SetState(ScoreItemState state);
     }
 
-    public enum ScoreItemState { Inactived, Unmarked, Marked }
+    public enum ScoreItemState
+    {
+        Inactived,
+        Unmarked,
+        Marked,
+    }
 }

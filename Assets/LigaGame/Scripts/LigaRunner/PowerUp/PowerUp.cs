@@ -8,6 +8,7 @@ namespace LigaGame.PowerUps
     public sealed class PowerUp : MonoBehaviour
     {
         [SerializeField] private float _time = 10f;
+        private PowerUpBehaviour[] _behaviours;
         private PowerUpTarget _target;
         private Animator _animator;
         private AudioSource _audioSource;
@@ -17,6 +18,7 @@ namespace LigaGame.PowerUps
         
         private void Awake()
         {
+            _behaviours = GetComponents<PowerUpBehaviour>();
             _audioSource = GetComponent<AudioSource>();
             _animator = GetComponent<Animator>();
         }
@@ -46,23 +48,28 @@ namespace LigaGame.PowerUps
         private IEnumerator ExecuteAction()
         {
             OnTake.Invoke();
-
-            PowerUpBehaviour[] behaviours = GetComponents<PowerUpBehaviour>();
             SetVisible(false);
-
-            foreach (PowerUpBehaviour behaviour in behaviours)
-            {
-                behaviour.Target = _target;
-                _target.EnablePowerUp(behaviour);
-            }
+            EnableBehaviours(true);
             yield return new WaitForSeconds(_time);
 
-            foreach (PowerUpBehaviour behaviour in behaviours)
-            {
-                _target.DisablePowerUp(behaviour);
-            }
-            
+            EnableBehaviours(false);
             Destroy();
+        }
+
+        private void EnableBehaviours(bool enable)
+        {
+            foreach (PowerUpBehaviour behaviour in _behaviours)
+            {
+                if (enable)
+                {
+                    behaviour.Target = _target;
+                    _target.EnablePowerUp(behaviour);
+                }
+                else
+                {
+                    _target.DisablePowerUp(behaviour);
+                }
+            }
         }
 
         public void SetVisible(bool isVisible)
@@ -72,7 +79,9 @@ namespace LigaGame.PowerUps
             if (!isVisible)
             {
                 if (_audioSource)
+                {
                     _audioSource.Play();
+                }
             }
         }
 

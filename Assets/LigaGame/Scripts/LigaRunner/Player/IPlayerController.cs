@@ -10,6 +10,5 @@ namespace LigaGame.Player
         void Move(float direction);
         void HealthChanged(float healthChange);
         void Died();
-        void Revive();
     }    
 }

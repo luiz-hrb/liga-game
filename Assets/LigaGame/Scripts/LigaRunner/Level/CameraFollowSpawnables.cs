@@ -13,14 +13,16 @@ namespace LigaGame.Level
 
         private void Start()
         {
-            if (_spawner != null)
-            {
-                _spawner.OnSpawn.AddListener(SetTarget);
+            SubscribeToSpawner();
+        }
 
-                if (_spawner.LastObject != null)
-                {
-                    SetTarget(_spawner.LastObject);
-                }
+        private void SubscribeToSpawner()
+        {
+            _spawner.OnSpawn.AddListener(SetTarget);
+
+            if (_spawner.LastObject != null)
+            {
+                SetTarget(_spawner.LastObject);
             }
         }
 

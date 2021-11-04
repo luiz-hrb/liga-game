@@ -34,11 +34,6 @@ namespace LigaGame.Player
             _animator.SetTrigger("Died");
         }
 
-        public void Revive()
-        {
-            _animator.SetTrigger("Revived");
-        }
-
         public void IsGrounded(bool isGrounded)
         {
             _animator.SetBool("IsGrounded", isGrounded);

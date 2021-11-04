@@ -29,15 +29,15 @@ namespace LigaGame.PowerUps
         {
             CurrentPowerUpsBehaviours.Remove(powerUpBehaviour);
 
-            if (!HasPowerUpOfType(powerUpBehaviour._Type))
+            if (!HasPowerUpOfType(powerUpBehaviour.Type))
             {
                 powerUpBehaviour.OnEndAction();
             }
         }
 
-        private bool HasPowerUpOfType(PowerUpBehaviour.Type type)
+        private bool HasPowerUpOfType(PowerupType type)
         {
-            return CurrentPowerUpsBehaviours.Find(powerUp => powerUp._Type == type) != null;
+            return CurrentPowerUpsBehaviours.Find(powerUp => powerUp.Type == type) != null;
         }
     }    
 }

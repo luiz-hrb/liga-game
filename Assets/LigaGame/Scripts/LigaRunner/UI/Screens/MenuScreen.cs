@@ -15,20 +15,23 @@ namespace LigaGame.UI.Screens
         private new void Awake()
         {
             base.Awake();
+            
             _buttonPlay.onClick.AddListener(Play);
             _buttonQuit.onClick.AddListener(Quit);
         }
 
         public void Play()
         {
-            Analytics.CustomEvent("Play");
             NotifyParent(_playNotification);
+
+            Analytics.CustomEvent("Play");
         }
 
         public void Quit()
         {
-            Analytics.CustomEvent("Quit");
             NotifyParent(_quitNotification);
+            
+            Analytics.CustomEvent("Quit");
         }
     }
 }

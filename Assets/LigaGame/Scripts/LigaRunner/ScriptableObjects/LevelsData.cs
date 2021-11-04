@@ -31,6 +31,7 @@ namespace LigaGame.ScriptableObjects
             {
                 return null;
             }
+            
             if (currentLevelIndex == _levels.Length - 1)
             {
                 return null;
@@ -40,11 +41,11 @@ namespace LigaGame.ScriptableObjects
 
         private int GetLevelIndex(LevelModel level)
         {
-            for (int i = 0; i < _levels.Length; i++)
+            for (int levelId = 0; levelId < _levels.Length; levelId++)
             {
-                if (_levels[i].scene == level.scene)
+                if (_levels[levelId].scene == level.scene)
                 {
-                    return i;
+                    return levelId;
                 }
             }
             return -1;

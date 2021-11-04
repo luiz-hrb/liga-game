@@ -103,6 +103,7 @@ namespace LigaGame.Player
             if (canJump)
             {
                 ApplyJumpForce();
+                _playerView.Jump();
             }
         }
 
@@ -146,12 +147,6 @@ namespace LigaGame.Player
             _isAlive = false;
             _playerView.Died();
             OnDeath.Invoke();
-        }
-
-        public void Revive()
-        {
-            _isAlive = true;
-            _playerView.Revive();
         }
     }
 }

@@ -960,6 +960,11 @@ PrefabInstance:
       objectReference: {fileID: 2075133619}
     - target: {fileID: 7576787004233517353, guid: 4a14d0737688ec141b00404e5962f633,
         type: 3}
+      propertyPath: _sceneIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576787004233517353, guid: 4a14d0737688ec141b00404e5962f633,
+        type: 3}
       propertyPath: _scoreStars
       value: 
       objectReference: {fileID: 1803663383}

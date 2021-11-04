@@ -9,7 +9,7 @@ namespace LigaGame.Model
     {
         public LevelProgressModel[] levelsProgressData;
             
-        public void CheckLevelsData(LevelModel[] levelsData)
+        public void CheckLevelsProgressData(LevelModel[] levelsData)
         {
             CheckLevelsProgressNull(levelsData);
             CheckLevelsQuantity(levelsData);
@@ -40,14 +40,11 @@ namespace LigaGame.Model
                 {
                     bool isNewLevel = levelId >= levelsProgressData.Length;
 
-                    if (!isNewLevel)
-                    {
-                        newLevelsProgressData[levelId] = levelsProgressData[levelId];
-                    }
-                    else
-                    {
-                        newLevelsProgressData[levelId] = new LevelProgressModel(levelsData[levelId].scene);
-                    }
+                    LevelProgressModel levelProgressData = isNewLevel ?
+                        new LevelProgressModel(levelsData[levelId].scene) :
+                        levelsProgressData[levelId];
+
+                    newLevelsProgressData[levelId] = levelProgressData;
                 }
                 levelsProgressData = newLevelsProgressData;
 

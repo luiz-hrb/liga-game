@@ -21,14 +21,15 @@ namespace LigaGame.UI.Screens
         {
             base.Awake();
             _buttons = new List<LevelSelectorButton>();
-            _returnButton.onClick.AddListener(Return);
+            AssignEvents();
 
-            SaveSystem.PlayerData.CheckLevelsData(_levelsData.Levels);
+            SaveSystem.PlayerData.CheckLevelsProgressData(_levelsData.Levels);
+            CreateLoadMenu();
         }
 
-        private void Start()
+        private void AssignEvents()
         {
-            CreateLoadMenu();
+            _returnButton.onClick.AddListener(Return);
         }
 
         private void CreateLoadMenu()
@@ -36,12 +37,9 @@ namespace LigaGame.UI.Screens
             ClearButtons();
             var levelsProgressData = SaveSystem.PlayerData.levelsProgressData;
 
-            for (int i = 0; i < levelsProgressData.Length; i++)
+            for (int levelId = 0; levelId < levelsProgressData.Length; levelId++)
             {
-                LevelModel levelData = _levelsData.Levels[i];
-                LevelProgressModel levelProgressData = levelsProgressData[i];
-
-                LevelSelectorButton button = CreateButton(levelData, levelProgressData);
+                LevelSelectorButton button = CreateButton(_levelsData.Levels[levelId], levelsProgressData[levelId]);
                 _buttons.Add(button);
             }
         }
@@ -49,7 +47,8 @@ namespace LigaGame.UI.Screens
         private LevelSelectorButton CreateButton(LevelModel levelData, LevelProgressModel levelProgressData)
         {
             var button = Instantiate(_levelButtonPrefab, _levelButtonParent);
-            button.Initialize(levelData, levelProgressData, () => {
+
+            button.Initialize(levelData, levelProgressData, onClickAction: () => {
                 Analytics.CustomEvent("Level loaded", new Dictionary<string, object>
                 {
                     { "Level", levelData.name }
