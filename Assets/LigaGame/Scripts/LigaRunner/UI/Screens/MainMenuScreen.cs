@@ -4,7 +4,7 @@ using UnityEngine.Analytics;
 
 namespace LigaGame.UI.Screens
 {
-    public sealed class MenuScreen : ScreenBase
+    public sealed class MainMenuScreen : ScreenBase
     {
         [SerializeField] Button _buttonPlay;
         [SerializeField] Button _buttonQuit;
