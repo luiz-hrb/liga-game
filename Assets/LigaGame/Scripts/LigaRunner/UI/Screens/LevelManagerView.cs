@@ -32,7 +32,6 @@ namespace LigaGame.UI.Screens
             _levelManager = levelManager;
             Timer.StartCount();
             Healthbar.SetHealthBehaviour(player.HealthBehaviour);
-            Debug.Log($"points {quantityPoints}");
             ScorePoints.SetScoreItensQuantity(quantityPoints);
             ScorePoints.SetPoints(0);
         }

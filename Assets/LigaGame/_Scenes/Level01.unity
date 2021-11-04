@@ -801,10 +801,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1117242818}
     m_Modifications:
-    - target: {fileID: 1308169755, guid: b86ab9ec19be35c408f4561e91572e47, type: 3}
-      propertyPath: _jumpForce
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 6740198945385003408, guid: b86ab9ec19be35c408f4561e91572e47,
         type: 3}
       propertyPath: m_Name
@@ -874,11 +870,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1117242818}
     m_Modifications:
-    - target: {fileID: 934482422479990610, guid: 380c55ac4274d0f4990a2d8028cfd499,
-        type: 3}
-      propertyPath: _velocity
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8244050649705355968, guid: 380c55ac4274d0f4990a2d8028cfd499,
         type: 3}
       propertyPath: m_Name
