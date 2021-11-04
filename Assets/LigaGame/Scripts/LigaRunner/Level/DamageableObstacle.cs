@@ -3,7 +3,7 @@ using LigaGame.Health;
 
 namespace LigaGame.Level
 {
-    public class Obstacle : MonoBehaviour
+    public class DamageableObstacle : MonoBehaviour
     {
         [SerializeField] private float _damage = 1f;
 
