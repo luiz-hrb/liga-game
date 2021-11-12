@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &947502469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958369939987298128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 0
+    m_LifecycleEvent: 0
+    m_ApplyRules: 0
+    m_Rules:
+      m_Rules: []
+    m_TriggerBool: 0
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 0
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: CustomEvent
+    m_Parameters:
+      m_Parameters: []
+    m_Name: Play
 --- !u!1 &3913088121762699080
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,15 +97,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Liga Game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 900ad608da6f460429056e2fa0bd793a, type: 2}
+  m_sharedMaterial: {fileID: 5777175670890108853, guid: 900ad608da6f460429056e2fa0bd793a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278716659
-  m_fontColor: {r: 0.9528302, g: 0.03146139, b: 0.03146139, a: 1}
+    rgba: 4280585239
+  m_fontColor: {r: 0.09019608, g: 0.54901963, b: 0.14117648, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,13 +123,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -150,7 +181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3913088122671585128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -158,7 +189,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3913088122671585129}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -357,10 +388,60 @@ PrefabInstance:
       propertyPath: m_text
       value: Play!
       objectReference: {fileID: 0}
+    - target: {fileID: 4940814900125188970, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940814900125188970, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940814900125188970, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 947502469}
+    - target: {fileID: 4940814900125188970, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940814900125188970, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940814900125188970, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Analytics.AnalyticsEventTracker, Unity.Analytics.Tracker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940814900125188970, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5938438380269283227, guid: 46a5c5ea090390b4b93c423f596ea08c,
         type: 3}
       propertyPath: m_Name
       value: Button Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991785758399076979, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.37883437
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991785758399076979, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991785758399076979, guid: 46a5c5ea090390b4b93c423f596ea08c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.22988607
       objectReference: {fileID: 0}
     - target: {fileID: 8385505519223403010, guid: 46a5c5ea090390b4b93c423f596ea08c,
         type: 3}
@@ -469,6 +550,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a5c5ea090390b4b93c423f596ea08c, type: 3}
+--- !u!1 &1958369939987298128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5938438380269283227, guid: 46a5c5ea090390b4b93c423f596ea08c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5279367940897099979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4403212002313544393 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8385505519223403010, guid: 46a5c5ea090390b4b93c423f596ea08c,
@@ -481,7 +568,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5279367940897099979}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1958369939987298128}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}

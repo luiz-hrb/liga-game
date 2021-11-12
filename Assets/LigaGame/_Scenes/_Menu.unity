@@ -371,42 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ba9bc5a77ad61468d54408aa3317a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &947502464 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1958369939987298128, guid: a22a55cbd6199374fae638ede1ccdad4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3913088122559925991}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &947502469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947502464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Trigger:
-    m_IsTriggerExpanded: 1
-    m_Type: 0
-    m_LifecycleEvent: 0
-    m_ApplyRules: 0
-    m_Rules:
-      m_Rules: []
-    m_TriggerBool: 0
-    m_InitTime: 5
-    m_RepeatTime: 5
-    m_Repetitions: 0
-    repetitionCount: 0
-  m_EventPayload:
-    m_IsEventExpanded: 1
-    m_StandardEventType: CustomEvent
-    m_Parameters:
-      m_Parameters: []
-    m_Name: Play
 --- !u!224 &2036324751 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3913088122671585128, guid: a22a55cbd6199374fae638ede1ccdad4,
@@ -824,91 +788,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 141090459}
     m_Modifications:
-    - target: {fileID: 996801653647250337, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 996801653647250337, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 996801653647250337, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 947502469}
-    - target: {fileID: 996801653647250337, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996801653647250337, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TriggerEvent
-      objectReference: {fileID: 0}
-    - target: {fileID: 996801653647250337, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Analytics.AnalyticsEventTracker, Unity.Analytics.Tracker
-      objectReference: {fileID: 0}
-    - target: {fileID: 996801653647250337, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858822478747585208, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.37883437
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858822478747585208, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.7735849
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858822478747585208, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.22988607
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088121762699094, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088121762699094, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_fontStyle
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088121762699094, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.14117648
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088121762699094, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.54901963
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088121762699094, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.09019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088121762699094, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088121762699094, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4280585239
-      objectReference: {fileID: 0}
     - target: {fileID: 3913088122671585128, guid: a22a55cbd6199374fae638ede1ccdad4,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1018,11 +897,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Menu Screen
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913088122671585129, guid: a22a55cbd6199374fae638ede1ccdad4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a22a55cbd6199374fae638ede1ccdad4, type: 3}
