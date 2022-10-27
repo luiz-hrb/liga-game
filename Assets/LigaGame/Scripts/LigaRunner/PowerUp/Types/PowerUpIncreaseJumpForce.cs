@@ -6,7 +6,6 @@ namespace LigaGame.PowerUps
     public sealed class PowerUpIncreaseJumpForce : PowerUpBehaviour
     {
         [SerializeField] private float _jumpForce = 600f;
-        private float _jumpForceDefault;
         private PlayerController _player;
 
         public override void OnStartAction()
@@ -18,7 +17,6 @@ namespace LigaGame.PowerUps
                 return;
             }
 
-            _jumpForceDefault = _player.JumpForce;
             _player.JumpForce = _jumpForce;
         }
 
@@ -29,7 +27,7 @@ namespace LigaGame.PowerUps
                 return;
             }
 
-            _player.JumpForce = _jumpForceDefault;
+            _player.ResetJumpForce();
         }
     }
 }

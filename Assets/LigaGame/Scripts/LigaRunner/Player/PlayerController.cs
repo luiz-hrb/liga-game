@@ -25,6 +25,7 @@ namespace LigaGame.Player
 
         private const float _extraGoundTestHeigth = 0.1f;
         public UnityEvent OnDeath;
+        private float _defaultJumpForce;
 
         public float Speed
         {
@@ -54,6 +55,13 @@ namespace LigaGame.Player
 
             _healthBehaviour.OnHealthChanged.AddListener(HealthChanged);
             _healthBehaviour.OnDeath.AddListener(Died);
+
+            _defaultJumpForce = _jumpForce;
+        }
+
+        internal void ResetJumpForce()
+        {
+            JumpForce = _defaultJumpForce;
         }
 
         private void FixedUpdate()
