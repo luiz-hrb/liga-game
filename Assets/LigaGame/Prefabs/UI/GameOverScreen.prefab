@@ -223,7 +223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Voc\xEA morreu..."
+  m_text: Game over :/
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -377,7 +377,7 @@ PrefabInstance:
     - target: {fileID: 1630777085282210132, guid: 46a5c5ea090390b4b93c423f596ea08c,
         type: 3}
       propertyPath: m_text
-      value: Voltar para menu
+      value: Back to menu
       objectReference: {fileID: 0}
     - target: {fileID: 5938438380269283227, guid: 46a5c5ea090390b4b93c423f596ea08c,
         type: 3}
@@ -519,7 +519,7 @@ PrefabInstance:
     - target: {fileID: 1630777085282210132, guid: 46a5c5ea090390b4b93c423f596ea08c,
         type: 3}
       propertyPath: m_text
-      value: "Reiniciar n\xEDvel"
+      value: Restart level
       objectReference: {fileID: 0}
     - target: {fileID: 5938438380269283227, guid: 46a5c5ea090390b4b93c423f596ea08c,
         type: 3}
